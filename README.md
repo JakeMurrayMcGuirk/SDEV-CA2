@@ -33,3 +33,12 @@ export DATABASE_URL=sqlite:///file.db
 If you are using Windows 
 
 set DATABASE_URL=sqlite:///file.db
+
+
+Then please make sure to unset db after you finish working or set it in a venv :
+
+for mac /linix 
+unset DATABASE_URL
+
+for windows:
+Remove-Item env:\DATABASE_URL
