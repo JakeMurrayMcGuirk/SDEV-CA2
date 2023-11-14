@@ -1,0 +1,14 @@
+.idea
+*.sublime-*
+*.code-workspace
+
+*.py[cod]
+.venv
+.env
+.coverage
+
+node_modules/
+__pycache__/
+htmlcov/
+.tox/
+.pytest_cache/
