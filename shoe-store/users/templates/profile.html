@@ -2,11 +2,19 @@
 
 {% block title %}Profile{% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Profile</h1>
-    <h2>{{ user.username }}</h2>
-    <p>Email: {{ user.email }}</p>
-    <p>First Name: {{ user.first_name }}</p>
-    <p>Last Name: {{ user.last_name }}</p>
-    <!-- more profile information here -->
+    <div class="profile-container">
+        <h1 class="profile-title">Profile</h1>
+        <div class="profile-info">
+            <h2 class="profile-username">{{ user.username }}</h2>
+            <p class="profile-email">Email: {{ user.email }}</p>
+            <p class="profile-name">First Name: {{ user.first_name }}</p>
+            <p class="profile-name">Last Name: {{ user.last_name }}</p>
+            <!-- more profile information here -->
+        </div>
+    </div>
 {% endblock %}

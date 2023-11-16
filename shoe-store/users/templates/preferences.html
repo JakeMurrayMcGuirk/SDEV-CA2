@@ -2,6 +2,10 @@
 
 {% block title %}Preferences{% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/preferences.css' %}">
+{% endblock %}
+
 {% block content %}
     <h1>Preferences</h1>
     <form method="post" action="{% url 'user_preferences' %}">
