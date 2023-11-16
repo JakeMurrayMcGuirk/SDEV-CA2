@@ -1,4 +1,6 @@
+
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Settings{% endblock %}
 
@@ -10,7 +12,7 @@
     <div class="container">
         <div class="settings-form">
             <h1 class="settings-title">Settings</h1>
-            <form method="post" action="{% url 'user_settings' %}">
+            <form method="post" action="{% url 'settings' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>

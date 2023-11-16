@@ -30,7 +30,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
 
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["email", "name"]
+    REQUIRED_FIELDS = ["email", "name", "password"]
     EMAIL_FIELD = "email"
 
     date_joined = models.DateTimeField(
