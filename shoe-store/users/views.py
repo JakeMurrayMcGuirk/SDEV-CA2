@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import CustomUser, UserProfile
+from .models import UserProfile
 from .forms import SignupForm, UserSettingsForm, UserPreferencesForm
+from rest_framework import viewsets
+from .models import User
+from .serializers import UserSerializer
+
 
 # View for the homepage
 def home(request):
@@ -109,3 +113,7 @@ def dashboard(request):
     # Logic to display user dashboard (e.g., orders, cart)
     
     return render(request, 'dashboard.html', {'user': user})
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

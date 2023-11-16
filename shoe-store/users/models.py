@@ -64,7 +64,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="Name",
         help_text="User's full name",
     )
-
+    @property
+    def preferences(self):
+        preferences, _ = UserPreferences.objects.get_or_create(user=self)
+        return preferences
+    
     objects = UserManager()
 
     def __str__(self):
@@ -83,4 +87,8 @@ class UserActivity(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
   
 
-
+class UserPreferences(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    option1 = models.BooleanField(default=False)
+    option2 = models.BooleanField(default=False)
+    option3 = models.BooleanField(default=False)

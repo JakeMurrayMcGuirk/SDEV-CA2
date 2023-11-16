@@ -1,19 +1,19 @@
 from django import forms
-from .models import CustomUser
+from .models import User, UserPreferences
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['username', 'password', 'email']
 
 class UserSettingsForm(forms.ModelForm):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['name', 'email']
 
 class UserPreferencesForm(forms.ModelForm):
     class Meta:
-        model = CustomUser
-        fields = ['preferences']
+        model = UserPreferences
+        fields = ['option1', 'option2', 'option3']
