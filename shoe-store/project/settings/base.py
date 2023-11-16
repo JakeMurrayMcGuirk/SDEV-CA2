@@ -57,7 +57,17 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [str(BASE_DIR.joinpath('users/templates'))],
+        "DIRS": [
+            str(BASE_DIR.joinpath('users/templates')),
+            str(BASE_DIR.joinpath('blog/templates')),
+            str(BASE_DIR.joinpath('cart/templates')),
+            str(BASE_DIR.joinpath('notification/templates')),
+            str(BASE_DIR.joinpath('orders/templates')),
+            str(BASE_DIR.joinpath('products/templates')),
+            str(BASE_DIR.joinpath('reviews/templates')),
+            str(BASE_DIR.joinpath('search/templates')),
+            str(BASE_DIR.joinpath('Wishlist/templates')),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
