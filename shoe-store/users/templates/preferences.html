@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Preferences{% endblock %}
+
+{% block content %}
+    <h1>Preferences</h1>
+    <form method="post" action="{% url 'user_preferences' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="option1">Option 1</label>
+            <input type="checkbox" id="option1" name="option1">
+        </div>
+        <div class="form-group">
+            <label for="option2">Option 2</label>
+            <input type="checkbox" id="option2" name="option2">
+        </div>
+        <div class="form-group">
+            <label for="option3">Option 3</label>
+            <input type="checkbox" id="option3" name="option3">
+        </div>
+        <input type="submit" value="Save Preferences" class="btn btn-primary">
+    </form>
+{% endblock %}

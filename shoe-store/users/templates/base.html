@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My App{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'user_profile' %}">Profile</a></li>
+                    <li><a href="{% url 'user_settings' %}">Settings</a></li>
+                    <li><a href="{% url 'user_preferences' %}">Preferences</a></li>
+                    <li><a href="{% url 'account_deletion' %}">Delete Account</a></li>
+                    <li><a href="{% url 'user_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Signup</a></li>
+                    <li><a href="{% url 'user_login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>My App &copy; 2022</p>
+    </footer>
+</body>
+</html>

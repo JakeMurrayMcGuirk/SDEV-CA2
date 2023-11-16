@@ -1,5 +1,6 @@
 import dj_database_url
 from corsheaders.defaults import default_headers
+from django.conf import settings
 
 from .env import ABS_PATH, ENV_BOOL, ENV_INT, ENV_LIST, ENV_STR
 
@@ -52,7 +53,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [settings.BASE_DIR / 'users/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

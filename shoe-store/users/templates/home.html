@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My App</h1>
+            <p>Discover a world of possibilities.</p>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-users"></i>
+            <h2>Connect with Others</h2>
+            <p>Meet new people and connect with friends.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-cog"></i>
+            <h2>Customize Your Profile</h2>
+            <p>Personalize your profile to reflect your style.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-heart"></i>
+            <h2>Discover Interests</h2>
+            <p>Explore and discover new interests and hobbies.</p>
+        </div>
+    </section>
+{% endblock %}
