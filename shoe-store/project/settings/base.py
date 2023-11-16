@@ -1,6 +1,9 @@
 import dj_database_url
 from corsheaders.defaults import default_headers
 from django.conf import settings
+import os
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 from .env import ABS_PATH, ENV_BOOL, ENV_INT, ENV_LIST, ENV_STR
 
@@ -53,7 +56,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [settings.BASE_DIR / 'users/templates'],
+        "DIRS": [str(BASE_DIR.joinpath('users/templates'))],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -164,3 +167,5 @@ LOGGING = {
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = default_headers + ("content-disposition",)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
