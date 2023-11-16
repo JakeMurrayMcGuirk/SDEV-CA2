@@ -3,6 +3,10 @@ from corsheaders.defaults import default_headers
 
 from .env import ABS_PATH, ENV_BOOL, ENV_INT, ENV_LIST, ENV_STR
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DEBUG = ENV_BOOL("DEBUG", True)
 SECRET_KEY = ENV_STR("SECRET_KEY", "secret" if DEBUG else "")
 ALLOWED_HOSTS = ENV_LIST("ALLOWED_HOSTS", ",", ["*"] if DEBUG else [])
