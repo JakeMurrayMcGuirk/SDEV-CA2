@@ -1,5 +1,9 @@
 import dj_database_url
 from corsheaders.defaults import default_headers
+from django.conf import settings
+import os
+from pathlib import Path
+
 
 from .env import ABS_PATH, ENV_BOOL, ENV_INT, ENV_LIST, ENV_STR
 
