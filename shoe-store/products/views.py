@@ -3,6 +3,10 @@ from rest_framework import decorators, parsers, response, status, viewsets
 from . import permissions
 from .models import Category, ProductModel
 from .serializers import CategorySerializer, ProductModelSerializer
+from rest_framework import viewsets
+from .models import Product
+from .serializers import ProductSerializer
+
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -43,3 +47,7 @@ class ProductModelViewSet(viewsets.ModelViewSet):
 
         obj.images.save(file.name, file, save=True)
         return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
