@@ -11,6 +11,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 DEBUG = ENV_BOOL("DEBUG", True)
 SECRET_KEY = ENV_STR("SECRET_KEY", "secret" if DEBUG else "")
 ALLOWED_HOSTS = ENV_LIST("ALLOWED_HOSTS", ",", ["*"] if DEBUG else [])
@@ -60,7 +61,17 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            str(BASE_DIR.joinpath('users/templates')),
+            str(BASE_DIR.joinpath('blog/templates')),
+            str(BASE_DIR.joinpath('cart/templates')),
+            str(BASE_DIR.joinpath('notification/templates')),
+            str(BASE_DIR.joinpath('orders/templates')),
+            str(BASE_DIR.joinpath('products/templates')),
+            str(BASE_DIR.joinpath('reviews/templates')),
+            str(BASE_DIR.joinpath('search/templates')),
+            str(BASE_DIR.joinpath('Wishlist/templates')),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
