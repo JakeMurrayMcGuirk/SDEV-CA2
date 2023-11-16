@@ -5,29 +5,16 @@ from django.utils.timezone import now
 
 
 class UserManager(BaseUserManager):
-    @classmethod
-    def normalize_email(cls, email):
-        """Normalize entire email to lowercase so we're case-insensitive"""
-        return email.lower()
-
-    def get_by_natural_key(self, email):
-        """Ignore case for purposes of determining uniqueness"""
-        return self.get(email__iexact=email)
-
-    def create_user(self, email, password=None, name=None):
-        user = self.create(email=email)
+    def create_user(self, username, password=None):
+        user = self.create(username=username)
         if password:
             user.set_password(password)
-        if name:
-            user.name = name
-        user.save()
+            user.save()
         return user
 
-    def create_superuser(self, email, password, name=None):
-        user = self.create(email=email, is_superuser=True, is_staff=True)
+    def create_superuser(self, username, password):
+        user = self.create(username=username, is_superuser=True, is_staff=True)
         user.set_password(password)
-        if name:
-            user.name = name
         user.save()
         return user
 
@@ -37,8 +24,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     Model representing the user of the system
     """
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["name"]
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ["email", "name"]
     EMAIL_FIELD = "email"
 
     date_joined = models.DateTimeField(
@@ -46,11 +33,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="Joined on",
         help_text="Date and time when the user was created",
     )
-    email = models.EmailField(
+    username = models.CharField(
         max_length=255,
         unique=True,
+        verbose_name="Username",
+        help_text="Username (must be unique)",
+    )
+    email = models.EmailField(
+        max_length=255,
         verbose_name="Email",
-        help_text="User's email address (must be unique)",
+        help_text="User's email address (optional)",
     )
     is_active = models.BooleanField(
         default=True,
@@ -72,7 +64,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return str(self.name)
-
-    def clean(self):
-        super().clean()
-        self.email = User.objects.normalize_email(self.email)

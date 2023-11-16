@@ -6,8 +6,8 @@ User = get_user_model()
 
 class UserAdmin(admin.ModelAdmin):
     model = User
-    list_display = ["email", "name", "is_active", "is_staff"]
-    search_fields = ["email", "name"]
+    list_display = ["username", "email", "is_active", "is_staff"]
+    search_fields = ["username", "email"]
     list_filter = ["is_active", "is_staff"]
 
 

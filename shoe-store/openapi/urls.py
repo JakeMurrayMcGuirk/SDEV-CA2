@@ -4,7 +4,7 @@ from rest_framework.schemas import get_schema_view
 
 TITLE = "Shoe Store"
 DESCRIPTION = """
-Django Project for a shoe store
+Django Project for a sgoe store
 """
 VERSION = "1.0.0"
 

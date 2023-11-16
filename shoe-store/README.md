@@ -1,56 +1,31 @@
 # Shoe Store
 
-Django Project for a sgoe store
-## Quickstart
 
 1. Set up a Python virtual environment and install the required Python dependencies:
 
-        pipenv install
+      python3 -m venv env
+
+      and download the listed modules in the read me file I have placed in the read me 
+
 
 2. Create `.env` configuration file based on `env.sample`:
-
-        cp env.sample .env
-        vim .env
+(Ill work on this myself)
 
 3. Set up the database
 
     You'll need to create the database and set `DATABASE_URL` in
     the configuration file before you can run migrations and use the code.
 
-    To use SQLite (supported out of the box), set the `DATABASE_URL` to
-    the location of database file (it will be created on the first run),
-    either relative to the project directory:
+    
 
-        DATABASE_URL=sqlite:///sqlite.db
-
-    Or absolutely positioned in the file system:
-
-        DATABASE_URL=sqlite:////full/path/to/sqlite.db
-
-    (Note the three or four dashes in the URL, respectively).
-
-    To use PostgreSQL or MariaDB databases, install the appropriate
-    driver and create database and user as needed. Example for
-    PostgreSQL (this assumes you already have PostgreSQL installed
-    on your system via package manager such as apt, rpm, or brew):
-
-    1. Connect to the database as admin and create a new user and database
-
-        CREATE USER 'appuser' WITH PASSWORD 'secretpassword';
-        CREATE DATABASE 'dbname' WITH OWNER 'appuser';
-
-    2. Install Python database driver for PostgreSQL
-
-        pipenv install psycopg2
-
-    3. Set up `DATABASE_URL` in your `.env`:
-
-        DATABASE_URL=postgres://appuser:secretpassword@localhost/dbname
+        DATABASE_URL=sqlite:///file.db
+ 
+ Please make sure youre in the shoe-store directry when you run this command 
+    
 
 4. Run migrations:
 
-        pipenv run python manage.py makemigrations
-        pipenv run python manage.py migrate
+       
 
 5. Run the server:
 
@@ -68,8 +43,6 @@ A superuser account can be created using the Django management command:
 
 ## Tests, linters and code coverage
 
-Activate your pipenv environment with `pipenv shell` so you
-don't need to prefix every command with `pipenv run`.
 
 To run the test suite:
 
