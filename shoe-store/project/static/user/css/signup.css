@@ -3,6 +3,12 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('/static/user/images/home.jpg');
+    padding: 100% vh;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .signup-form {
