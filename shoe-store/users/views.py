@@ -104,7 +104,7 @@ def account_deletion(request):
         messages.success(request, 'Account deleted successfully')
         return redirect('home')
     
-    return render(request, 'account_deletion.html', {'user': user})
+    return render(request, 'account_delete.html', {'user': user})
 
 # View for the dashboard
 @login_required

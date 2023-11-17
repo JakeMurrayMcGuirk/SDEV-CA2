@@ -11,6 +11,8 @@ from wishlist.urls import wishlist_router
 
 from blog.urls import blog_router
 from users.urls import users_router
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.registry.extend(blog_router.registry)
@@ -32,4 +34,4 @@ urlpatterns = [
     path("api/v1/auth/register/", include("dj_rest_auth.registration.urls")),
     path("api/v1/", include("openapi.urls")),
     path("api/v1/", include(router.urls)),
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

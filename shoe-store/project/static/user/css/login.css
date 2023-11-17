@@ -5,7 +5,7 @@
     height: 100vh;
 }
 
-.signup-form {
+login-form {
     max-width: 400px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -13,7 +13,11 @@
     background-color: #f9f9f9;
 }
 
-.signup-title {
+
+
+
+
+.login-title {
     text-align: center;
     margin-bottom: 20px;
 }
@@ -28,26 +32,25 @@ label {
 }
 
 input[type="text"],
-input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 95%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 10px solid #ccc;
+    border-radius: 40px;
 }
 
 .btn-primary {
     display: block;
-    width: 100%;
+    width: 97%;
     padding: 10px;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 40px;
+    background-color: #0073ff;
     color: #fff;
     cursor: pointer;
 }
 
-.login-link {
+.signup-link {
     text-align: center;
     margin-top: 20px;
 }

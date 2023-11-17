@@ -4,14 +4,17 @@
 {% block title %}Home{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
+    
+    
 {% endblock %}
 
 {% block content %}
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to Our sShoe Store</h1>
-            <p>Discover a world of possibilities.</p>
+            <h1>Welcome to Our shoe Store</h1>
+            <p>Discover new sneaker releases</p>
             <a href="{% url 'signup' %}" class="btn btn-primary">Get Started</a>
         </div>
     </section>
@@ -19,18 +22,18 @@
     <section class="features">
         <div class="feature">
             <i class="fas fa-users"></i>
-            <h2>Connect with Others</h2>
-            <p>Meet new people and connect with friends.</p>
+            <h2>Purchase Sneakers</h2>
+            <p>Purchase sneakers from a wide range of outlets from us.</p>
         </div>
         <div class="feature">
             <i class="fas fa-cog"></i>
             <h2>Customize Your Profile</h2>
-            <p>Personalize your profile to reflect your style.</p>
+            <p>Personalize your profile to reflect your shoe style.</p>
         </div>
         <div class="feature">
             <i class="fas fa-heart"></i>
-            <h2>Discover Interests</h2>
-            <p>Explore and discover new interests and hobbies.</p>
+            <h2>Discover new sneaker releases</h2>
+            <p>We keep updated on lastes sneaker drops </p>
         </div>
     </section>
 {% endblock %}
