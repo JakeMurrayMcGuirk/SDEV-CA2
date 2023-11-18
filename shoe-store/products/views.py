@@ -61,7 +61,7 @@ def product_list(request):
 
 class AllProductListView(ListView):
     model = ProductModel
-    template_name = 'all_product_list.html'  # Template to render the product list
+    template_name = 'product_list.html'  # Template to render the product list
     context_object_name = 'products'
 
     def get_queryset(self):
