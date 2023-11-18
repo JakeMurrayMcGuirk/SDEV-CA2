@@ -9,25 +9,34 @@ body {
 
 /* Hero Section */
 .hero {
+    background-image: url('/static/user/images/home.jpg');
     background-color: #007bff;
     color: #fff;
-    padding: 100px 0;
+    padding: 200px 0;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   
+
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
+    
 }
 
 .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    color: #0056b3
 }
 
 .hero p {
     font-size: 18px;
     margin-bottom: 30px;
+    color: #0056b3
 }
 
 .hero .btn-primary {
@@ -44,7 +53,7 @@ body {
 
 .hero .btn-primary:hover {
     background-color: #0056b3;
-    color: #fff;
+    color: #FDD017
 }
 
 /* Features Section */
