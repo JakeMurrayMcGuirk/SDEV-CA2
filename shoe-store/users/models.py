@@ -64,10 +64,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name="Name",
         help_text="User's full name",
     )
+
+    profile_picture = models.ImageField(upload_to='usermodel/images', blank=True, null=True)
+    
     @property
     def preferences(self):
         preferences, _ = UserPreferences.objects.get_or_create(user=self)
         return preferences
+    
+    
+
     
     objects = UserManager()
 

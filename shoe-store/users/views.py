@@ -57,13 +57,7 @@ def user_logout(request):
     # Redirect to homepage or login page
     return redirect('home')
 
-# View for user profile
-@login_required
-def user_profile(request):
-    user = request.user
-    # Fetch user profile data
-    profile = UserProfile.objects.get(user=user)
-    return render(request, 'profile.html', {'user': user, 'profile': profile})
+
 
 # View for user account settings
 @login_required
@@ -113,6 +107,15 @@ def dashboard(request):
     # Logic to display user dashboard (e.g., orders, cart)
     
     return render(request, 'dashboard.html', {'user': user})
+
+# View for user profile
+@login_required
+def user_profile(request):
+    user = request.user
+    user_profile = UserProfile.objects.get_or_create(user=user)[0]  # Fetches or creates the UserProfile
+    return render(request, 'profile.html', {'user': user, 'user_profile': user_profile})
+
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
