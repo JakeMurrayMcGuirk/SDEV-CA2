@@ -1,8 +1,9 @@
 from rest_framework import decorators, parsers, response, status, viewsets
-
+from django.shortcuts import render
 from . import permissions
 from .models import Category, ProductModel
 from .serializers import CategorySerializer, ProductModelSerializer
+from django.views.generic import ListView, DetailView
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -23,16 +24,6 @@ class ProductModelViewSet(viewsets.ModelViewSet):
         parser_classes=[parsers.FileUploadParser],
     )
     def upload_images(self, request, pk=None):
-        """
-        Upload images using a PUT request.
-
-        Use the Content-Type header to specify the file type, and the
-        Content-Disposition header to specify the filename, for example:
-
-            Content-Type: image/png
-            Content-Disposition: attachment; filename=screenshot.png
-        """
-
         obj = self.get_object()
         file = request.data.get("file")
         if not file:
@@ -43,3 +34,23 @@ class ProductModelViewSet(viewsets.ModelViewSet):
 
         obj.images.save(file.name, file, save=True)
         return response.Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'categories'
+
+
+class ProductListView(ListView):
+    model = ProductModel
+    template_name = 'product_list.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        return ProductModel.objects.filter(category__id=self.kwargs['pk'])
+
+
+def product_list(request):
+    products = ProductModel.objects.all()  # Fetch all products
+    return render(request, 'product_list.html', {'products': products})

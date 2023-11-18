@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+    <!-- Add your CSS for product detail view here -->
+    <style>
+        /* Style your product detail view here */
+        /* Use Nike-like aesthetics */
+    </style>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <div class="product-detail-container">
+        <div class="product-image">
+            <img src="{{ product.images.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-details">
+            <p>Price: ${{ product.price }}</p>
+            <p>Stock: {{ product.stock }}</p>
+            <p>Description: {{ product.description }}</p>
+            <!-- Additional details -->
+        </div>
+    </div>
+</body>
+</html>

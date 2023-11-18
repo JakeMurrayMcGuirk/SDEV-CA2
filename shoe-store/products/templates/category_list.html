@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <style>
+        /* Reset styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+        }
+
+        .category-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Enhanced Category Card styles */
+        .category-card {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            /* Consider using a different font or style */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #ccc;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            .category-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-card {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Categories</h1>
+    </header>
+    <main>
+        <section class="category-section">
+            {% for category in categories %}
+                <div class="category-card">
+                    <h2>{{ category.name }}</h2>
+                    <!-- Additional category details or links -->
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        &copy; shoe Website 2023
+    </footer>
+</body>
+</html>

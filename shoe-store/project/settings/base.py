@@ -67,7 +67,7 @@ TEMPLATES = [
             str(BASE_DIR.joinpath('products/templates')),
             str(BASE_DIR.joinpath('reviews/templates')),
             str(BASE_DIR.joinpath('search/templates')),
-            str(BASE_DIR.joinpath('Wishlist/templates')),
+            str(BASE_DIR.joinpath('wishlist/templates')),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
