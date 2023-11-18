@@ -28,10 +28,6 @@ router.registry.extend(users_router.registry)
 urlpatterns = [
     path('', include('users.urls')),
     path('api/v1/products/', include('products.urls')), 
-    path('api/v1/orders/', include('orders.urls')),  
-    path('api/v1/notifications/', include('notifications.urls')),  
-    path('api/v1/cart/', include('cart.urls')),  
-    path('api/v1/blog/', include('blog.urls')),  
     path("admin/doc/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
     path("api/docs/auth/", include("rest_framework.urls", namespace="rest_framework")),
@@ -40,3 +36,8 @@ urlpatterns = [
     path("api/v1/", include("openapi.urls")),
     path("api/v1/", include(router.urls)),
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+# path('api/v1/orders/', include('orders.urls')),  
+#   path('api/v1/notifications/', include('notification.urls')),  
+#    path('api/v1/cart/', include('cart.urls')),  

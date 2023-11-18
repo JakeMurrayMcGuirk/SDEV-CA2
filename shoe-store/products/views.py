@@ -48,9 +48,26 @@ class ProductListView(ListView):
     context_object_name = 'products'
 
     def get_queryset(self):
-        return ProductModel.objects.filter(category__id=self.kwargs['pk'])
+        if 'pk' in self.kwargs:  # If a category is specified
+            return ProductModel.objects.filter(category__id=self.kwargs['pk'])
+        else:  # If no category is specified, show all products
+            return ProductModel.objects.all()
+        
 
 
 def product_list(request):
     products = ProductModel.objects.all()  # Fetch all products
     return render(request, 'product_list.html', {'products': products})
+
+class AllProductListView(ListView):
+    model = ProductModel
+    template_name = 'all_product_list.html'  # Template to render the product list
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        return ProductModel.objects.all()
+    
+class ProductDetailView(DetailView):
+    model = ProductModel
+    template_name = 'product_detail.html'
+    context_object_name = 'product'
