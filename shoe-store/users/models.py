@@ -7,7 +7,7 @@ from django.utils.timezone import now
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_staff', False)
         user = self.model(username=username, **extra_fields)
         if password:
             user.set_password(password)
