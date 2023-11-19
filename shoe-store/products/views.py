@@ -47,10 +47,15 @@ class ProductListView(ListView):
     template_name = 'product_list.html'
     context_object_name = 'products'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
     def get_queryset(self):
-        if 'pk' in self.kwargs:  # If a category is specified
+        if 'pk' in self.kwargs:
             return ProductModel.objects.filter(category__id=self.kwargs['pk'])
-        else:  # If no category is specified, show all products
+        else:
             return ProductModel.objects.all()
         
 
@@ -61,12 +66,31 @@ def product_list(request):
 
 class AllProductListView(ListView):
     model = ProductModel
-    template_name = 'product_list.html'  # Template to render the product list
+    template_name = 'product_list.html'
     context_object_name = 'products'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
     def get_queryset(self):
-        return ProductModel.objects.all()
-    
+        queryset = ProductModel.objects.all()
+        category_id = self.request.GET.get('category')
+        sort_order = self.request.GET.get('sort')
+
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+
+        if sort_order == 'asc':
+            queryset = queryset.order_by('price')
+        elif sort_order == 'desc':
+            queryset = queryset.order_by('-price')
+
+        return queryset
+
+      
+
 class ProductDetailView(DetailView):
     model = ProductModel
     template_name = 'product_detail.html'

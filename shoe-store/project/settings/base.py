@@ -3,6 +3,7 @@ from corsheaders.defaults import default_headers
 from django.conf import settings
 import os
 from pathlib import Path
+import dj_database_url
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -175,6 +176,7 @@ LOGGING = {
         },
     },
 }
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <!DOCTYPE html>
@@ -6,78 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Categories</title>
-    <style>
-       
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-   
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-       
-        main {
-            padding: 20px;
-        }
-
-        .category-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        
-        .category-card {
-            background-color: #f2f2f2;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card h2 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-           
-        }
-
-        
-        footer {
-            background-color: #ccc;
-            color: #333;
-            text-align: center;
-            padding: 10px;
-        }
-
-        
-        @media (max-width: 768px) {
-            .category-card {
-                width: calc(50% - 20px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .category-card {
-                width: calc(100% - 20px);
-            }
-        }
-    </style>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'products/css/category_list.css' %}">
+    {% endblock %}
 </head>
 <body>
     <header>

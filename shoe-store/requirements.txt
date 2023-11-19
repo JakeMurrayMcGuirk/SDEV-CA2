@@ -15,3 +15,21 @@ PyYAML==6.0
 python-dotenv==1.0.0
 ruff==0.0.267
 uritemplate==4.1.1
+
+if you want to copy and paste to install the required dependecies :
+
+pip install django-cors-headers
+pip install dj-database-url
+pip install python-dotenv
+pip install djangorestframework
+pip install factory-boy
+pip install django-allauth
+pip install dj-rest-auth
+pip install django black
+pip install django-storages
+pip install django google-cloud-storage
+pip install django gunicorn
+pip install isort
+pip install django Pillow
+pip intsall django ruff
+pip install django uritemplate
