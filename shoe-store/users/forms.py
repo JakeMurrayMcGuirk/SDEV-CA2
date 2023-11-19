@@ -1,7 +1,5 @@
 from django import forms
 from .models import User, UserPreferences, UserProfile
-from django.core.exceptions import ValidationError
-from django.contrib.auth.password_validation import validate_password
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -9,17 +7,6 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'email', 'name']
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-
-        # Validate password against Django's built-in validators
-        try:
-            validate_password(password)
-        except ValidationError as e:
-            raise forms.ValidationError(e.messages)
-
-        return password
 
 
 class UserSettingsForm(forms.ModelForm):
@@ -36,3 +23,8 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['profile_picture']
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['address', 'age', 'gender', 'phone_number']

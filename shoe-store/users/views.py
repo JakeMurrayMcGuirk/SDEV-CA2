@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import UserProfile
-from .forms import SignupForm, UserSettingsForm, UserPreferencesForm, ProfilePictureForm
+from .forms import SignupForm, UserSettingsForm, UserPreferencesForm, ProfilePictureForm, UserProfileForm
 from rest_framework import viewsets
 from .models import User
 from .serializers import UserSerializer
@@ -105,14 +105,24 @@ def dashboard(request):
     
     return render(request, 'dashboard.html', {'user': user})
 
-# View for user profile
 @login_required
 def user_profile(request):
     user = request.user
-    user_profile = UserProfile.objects.get_or_create(user=user)[0]  # Fetches or creates the UserProfile
-    return render(request, 'profile.html', {'user': user, 'user_profile': user_profile})
+    user_profile, created = UserProfile.objects.get_or_create(user=user)
+    
+    if request.method == 'POST':
+        profile_form = UserProfileForm(request.POST, instance=user_profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            # Redirect or handle success
+    else:
+        profile_form = UserProfileForm(instance=user_profile)
 
-
+    return render(
+        request,
+        'profile.html',
+        {'user': user, 'user_profile': user_profile, 'profile_form': profile_form}
+    )
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

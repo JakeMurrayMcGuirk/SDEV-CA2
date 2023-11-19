@@ -14,14 +14,21 @@
         <div class="profile-info">
             <h2 class="profile-username">{{ user.username }}</h2>
             <p class="profile-email">Email: {{ user.email }}</p>
-            <!-- more profile information here -->
+            
+            <!-- UserProfileForm for updating profile details -->
+            <form method="post">
+                {% csrf_token %}
+                {{ profile_form.as_p }}
+                <input type="submit" value="Update Profile">
+            </form>
 
+            <!-- Display profile picture -->
             {% if user.profile_picture %}
                 <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
             {% else %}
                 <p>No profile picture uploaded yet.</p>
             {% endif %}
-
+            
             <!-- Form for uploading profile picture -->
             <form method="post" action="{% url 'upload_profile_picture' %}" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -34,4 +41,3 @@
         </div>
     </div>
 {% endblock %}
-
