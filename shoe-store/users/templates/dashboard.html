@@ -6,11 +6,12 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'user/css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
-    
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to your Dashboard, {{ user.username }}!</h1>
-    <p>This is your personalized dashboard.</p>
-    <!-- Add dashboard content here -->
+    <div class="dashboard-container">
+        <h1>Welcome to your Dashboard, {{ user.username }}!</h1>
+        <p>This is your personalized dashboard.</p>
+        <!-- Add your dashboard content here -->
+    </div>
 {% endblock %}

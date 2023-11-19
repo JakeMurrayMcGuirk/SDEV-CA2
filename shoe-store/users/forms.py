@@ -8,6 +8,7 @@ class SignupForm(forms.ModelForm):
         model = User
         fields = ['username', 'password', 'email', 'name']
 
+
 class UserSettingsForm(forms.ModelForm):
     class Meta:
         model = User
@@ -22,3 +23,8 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['profile_picture']
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['address', 'age', 'gender', 'phone_number']
