@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import UserProfile
-from .forms import SignupForm, UserSettingsForm, UserPreferencesForm
+from .forms import SignupForm, UserSettingsForm, UserPreferencesForm, ProfilePictureForm
 from rest_framework import viewsets
 from .models import User
 from .serializers import UserSerializer
@@ -117,3 +117,15 @@ def user_profile(request):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+def upload_profile_picture(request):
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Redirect to the user's profile page
+    else:
+        form = ProfilePictureForm()
+
+    return render(request, 'profile.html', {'form': form})
