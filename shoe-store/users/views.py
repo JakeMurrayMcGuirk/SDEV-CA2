@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import UserProfile
-from .forms import SignupForm, UserSettingsForm, UserPreferencesForm
+from .forms import SignupForm, UserSettingsForm, UserPreferencesForm, ProfilePictureForm
 from rest_framework import viewsets
 from .models import User
 from .serializers import UserSerializer
@@ -13,24 +13,21 @@ from .serializers import UserSerializer
 def home(request):
     return render(request, 'home.html')
 
-# View for user signup
 def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                # Redirect to appropriate page after signup
-                return redirect('dashboard')
-            else:
-                messages.error(request, 'Invalid credentials')
-    else:
-        form = SignupForm()
-    
+    form = SignupForm(request.POST) if request.method == 'POST' else SignupForm()
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        email = form.cleaned_data['email']
+        name = form.cleaned_data['name']
+        password = form.cleaned_data['password']
+
+        user = User.objects.create_user(username, email=email, name=name, password=password)
+        if user:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Failed to create user')
+
     return render(request, 'signup.html', {'form': form})
 
 # View for user login
@@ -57,13 +54,7 @@ def user_logout(request):
     # Redirect to homepage or login page
     return redirect('home')
 
-# View for user profile
-@login_required
-def user_profile(request):
-    user = request.user
-    # Fetch user profile data
-    profile = UserProfile.objects.get(user=user)
-    return render(request, 'profile.html', {'user': user, 'profile': profile})
+
 
 # View for user account settings
 @login_required
@@ -79,7 +70,7 @@ def user_settings(request):
     
     return render(request, 'settings.html', {'form': form})
 
-# View for user preferences
+
 # View for user preferences
 @login_required
 def user_preferences(request):
@@ -114,6 +105,27 @@ def dashboard(request):
     
     return render(request, 'dashboard.html', {'user': user})
 
+# View for user profile
+@login_required
+def user_profile(request):
+    user = request.user
+    user_profile = UserProfile.objects.get_or_create(user=user)[0]  # Fetches or creates the UserProfile
+    return render(request, 'profile.html', {'user': user, 'user_profile': user_profile})
+
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+def upload_profile_picture(request):
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Redirect to the user's profile page
+    else:
+        form = ProfilePictureForm()
+
+    return render(request, 'profile.html', {'form': form})

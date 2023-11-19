@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoe Products</title>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'products/css/product_list.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+    <main>
+        <section class="product-section">
+           
+            <h2>Shoe Products</h2>
+            <section class="product-section">
+                <form action="" method="get">
+                    <label for="category">Filter by Category:</label>
+                    <select name="category" id="category">
+                        <option value="">All</option>
+                        <!-- Fetch and loop through categories to populate the options -->
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Filter</button>
+                </form>
+                
+                <!-- Buttons for sorting -->
+                <form action="" method="get">
+                    <label for="sort">Sort by Price:</label>
+                    <select name="sort" id="sort">
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
+                    </select>
+                    <button type="submit">Sort</button>
+                </form>
+
+            <div class="product-container">
+                {% for product in products %}
+                    <div class="product-card">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.images.url }}" alt="{{ product.name }}">
+                        </a>
+                        <div class="product-details">
+                            <h3>
+                                <a href="{% url 'product_detail' product.id %}">
+                                    {{ product.name }}
+                                </a>
+                            </h3>
+                            <p >Price: ${{ product.price }}</p>
+                            <!-- Additional product details -->
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

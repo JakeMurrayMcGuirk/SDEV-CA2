@@ -9,7 +9,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background-color: #007bff;
+    background-color: #030303;
     color: #fff;
     padding: 100px 0;
     text-align: center;
@@ -36,14 +36,14 @@ body {
     border: none;
     border-radius: 5px;
     background-color: #fff;
-    color: #007bff;
+    color: #E60100;
     font-size: 18px;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .hero .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #E60100;
     color: #fff;
 }
 
@@ -64,7 +64,7 @@ body {
 .feature i {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #007bff;
+    color: #E60100
 }
 
 .feature h2 {

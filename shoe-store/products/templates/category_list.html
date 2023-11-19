@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'products/css/category_list.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Categories</h1>
+    </header>
+    <main>
+        <section class="category-section">
+            {% for category in categories %}
+                <div class="category-card">
+                    <h2>{{ category.name }}</h2>
+                    <!-- Additional category details or links -->
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+    <footer>
+        &copy; shoe Website 2023
+    </footer>
+</body>
+</html>
+{% endblock %}

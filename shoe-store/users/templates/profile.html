@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% load static %}
 
@@ -7,7 +6,6 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'user/css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
-   
 {% endblock %}
 
 {% block content %}
@@ -16,9 +14,24 @@
         <div class="profile-info">
             <h2 class="profile-username">{{ user.username }}</h2>
             <p class="profile-email">Email: {{ user.email }}</p>
-            <p class="profile-name">First Name: {{ user.first_name }}</p>
-            <p class="profile-name">Last Name: {{ user.last_name }}</p>
             <!-- more profile information here -->
+
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+                <p>No profile picture uploaded yet.</p>
+            {% endif %}
+
+            <!-- Form for uploading profile picture -->
+            <form method="post" action="{% url 'upload_profile_picture' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_profile_picture">Upload Profile Picture:</label>
+                    <input type="file" id="id_profile_picture" name="profile_picture" accept="image/*" required>
+                </div>
+                <input type="submit" value="Upload" class="btn btn-primary">
+            </form>
         </div>
     </div>
 {% endblock %}
+

@@ -21,7 +21,7 @@ pip install django uritemplate
 
 
 
-Ive created a file.db file in the shoe-store directory, its important to set this everytime before you run the project as it will contain all data from the admin models,  so run this command 
+Ive created a file.db file in the shoe-store d§irectory, its important to set this everytime before you run the project as it will contain all data from the admin models,  so run this command 
 
 If you are using a Unix/Linix/Mac
 

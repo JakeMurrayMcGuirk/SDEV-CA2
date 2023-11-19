@@ -3,6 +3,7 @@ from corsheaders.defaults import default_headers
 from django.conf import settings
 import os
 from pathlib import Path
+import dj_database_url
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    "blog.apps.BlogConfig",
+     "blog.apps.BlogConfig",
     "cart.apps.CartConfig",
     "notification.apps.NotificationConfig",
     "orders.apps.OrdersConfig",
@@ -60,14 +61,14 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             str(BASE_DIR.joinpath('users/templates')),
-            #str(BASE_DIR.joinpath('blog/templates')),
-            #str(BASE_DIR.joinpath('cart/templates')),
-            #str(BASE_DIR.joinpath('notification/templates')),
-            #str(BASE_DIR.joinpath('orders/templates')),
-            #str(BASE_DIR.joinpath('products/templates')),
-            #str(BASE_DIR.joinpath('reviews/templates')),
-            #str(BASE_DIR.joinpath('search/templates')),
-            #str(BASE_DIR.joinpath('Wishlist/templates')),
+            str(BASE_DIR.joinpath('blog/templates')),
+            str(BASE_DIR.joinpath('cart/templates')),
+            str(BASE_DIR.joinpath('notification/templates')),
+            str(BASE_DIR.joinpath('orders/templates')),
+            str(BASE_DIR.joinpath('products/templates')),
+            str(BASE_DIR.joinpath('reviews/templates')),
+            str(BASE_DIR.joinpath('search/templates')),
+            str(BASE_DIR.joinpath('wishlist/templates')),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -86,7 +87,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 DATABASES = {"default": dj_database_url.config()}
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = 'users.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -97,9 +98,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+
+
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
 )
 
 # allauth settings
@@ -175,6 +177,7 @@ LOGGING = {
         },
     },
 }
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True

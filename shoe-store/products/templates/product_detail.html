@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }}</title>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'products/css/product_detail.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <main>
+        <div class="product-detail-container">
+            <div class="product-image">
+                <img src="{{ product.images.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="product-details">
+                <h1>{{ product.name }}</h1>
+                <p>Category: {{ product.category }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <p>Stock: {{ product.stock }}</p>
+                <p>Description: {{ product.description }}</p>
+                <!-- Additional product details -->
+                <button class="add-to-cart-btn">Add to Cart</button>
+                <button class="back-to-products-btn" onclick="window.history.back()">Back to Products</button>
+            </div>
+        </div>
+        
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <h2>Product Reviews</h2>
+            {% if product.product_reviews.all %}
+                <ul>
+                    {% for review in product.product_reviews.all %}
+                        <li>
+                            <strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5:
+                            <p>{{ review.review_text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No reviews yet.</p>
+            {% endif %}
+            
+            <!-- Add your review form here -->
+        </section>
+    </main>
+</body>
+</html>
+{% endblock %}

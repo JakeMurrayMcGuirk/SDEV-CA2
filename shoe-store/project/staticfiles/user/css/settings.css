@@ -3,10 +3,16 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('/static/user/images/home.jpg');
+    padding: 100% vh;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .settings-form {
-    max-width: 400px;
+    width:500px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -30,7 +36,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -42,7 +48,7 @@ input[type="password"] {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #E60100;
     color: #fff;
     cursor: pointer;
 }

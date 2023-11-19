@@ -10,7 +10,7 @@ body {
 /* Hero Section */
 .hero {
     background-image: url('/static/user/images/home.jpg');
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     padding: 200px 0;
     text-align: center;
@@ -45,14 +45,14 @@ body {
     border: none;
     border-radius: 5px;
     background-color: #fff;
-    color: #007bff;
+    color: rgb(255, 0, 0);
     font-size: 18px;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .hero .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: rgb(255, 0, 0);
     color: #FDD017
 }
 
@@ -73,7 +73,7 @@ body {
 .feature i {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #007bff;
+    color: #E60100;
 }
 
 .feature h2 {

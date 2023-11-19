@@ -13,13 +13,13 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Home &nbsp;&nbsp;  </a></li>
+                <li><a href="{% url 'home' %}">Home &nbsp;&nbsp; </a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'dashboard' %}">Dashboard &nbsp; &nbsp; </a></li>
                     <li><a href="{% url 'profile' %}">Profile &nbsp; &nbsp; </a></li>
                     <li><a href="{% url 'settings' %}">Settings &nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'preferences' %}">Preferences &nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'account_deletion' %}">&nbsp; &nbsp; Delete Account</a></li>
+                    <li><a href="{% url 'preferences' %}">Preferences &nbsp;  </a></li>
+                    <li><a href="{% url 'account_delete' %}">&nbsp; &nbsp; Delete Account</a></li>
                     <li><a href="{% url 'logout' %}">&nbsp; &nbsp; Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'signup' %}">Signup&nbsp; &nbsp; </a></li>
@@ -35,7 +35,7 @@
     </main>
 
     <footer>
-        <p> Our Shoe store app</p> &copy; 2023</p>
+        <p> Our Shoe store site</p> &copy; 2023</p>
     </footer>
 </body>
 </html>

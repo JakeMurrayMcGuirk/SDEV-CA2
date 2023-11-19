@@ -22,6 +22,5 @@ class UserPermission(permissions.BasePermission):
             # admins can do anything
             return True
 
-        # regular users can only retrieve themselves
-        # this is checked by UserPermission.has_object_permission()
+        
         return view.action == "retrieve"

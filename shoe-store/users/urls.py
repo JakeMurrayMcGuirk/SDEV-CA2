@@ -1,11 +1,13 @@
 from rest_framework import routers
 from django.urls import path
+from . import views
 from .views import UserViewSet, home, signup, user_login, user_logout, user_profile, user_settings, user_preferences, account_deletion, dashboard
 users_router = routers.SimpleRouter()
 users_router.register(r"users/user", UserViewSet)
 
 urlpatterns = [
     path('', home, name='home'),
+    path('upload_profile_picture/', views.upload_profile_picture, name='upload_profile_picture'),
     path('signup/', signup, name='signup'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
