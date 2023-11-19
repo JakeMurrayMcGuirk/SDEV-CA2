@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    "blog.apps.BlogConfig",
+     "blog.apps.BlogConfig",
     "cart.apps.CartConfig",
     "notification.apps.NotificationConfig",
     "orders.apps.OrdersConfig",
@@ -87,7 +87,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 DATABASES = {"default": dj_database_url.config()}
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = 'users.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,9 +98,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+
+
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
+    
 )
 
 # allauth settings

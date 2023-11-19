@@ -13,24 +13,21 @@ from .serializers import UserSerializer
 def home(request):
     return render(request, 'home.html')
 
-# View for user signup
 def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                # Redirect to appropriate page after signup
-                return redirect('dashboard')
-            else:
-                messages.error(request, 'Invalid credentials')
-    else:
-        form = SignupForm()
-    
+    form = SignupForm(request.POST) if request.method == 'POST' else SignupForm()
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        email = form.cleaned_data['email']
+        name = form.cleaned_data['name']
+        password = form.cleaned_data['password']
+
+        user = User.objects.create_user(username, email=email, name=name, password=password)
+        if user:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Failed to create user')
+
     return render(request, 'signup.html', {'form': form})
 
 # View for user login
@@ -73,7 +70,7 @@ def user_settings(request):
     
     return render(request, 'settings.html', {'form': form})
 
-# View for user preferences
+
 # View for user preferences
 @login_required
 def user_preferences(request):

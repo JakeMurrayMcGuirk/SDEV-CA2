@@ -15,10 +15,7 @@
         <div class="profile-info">
             <h2 class="profile-username">{{ user.username }}</h2>
             <p class="profile-email">Email: {{ user.email }}</p>
-            <p class="profile-name">First Name: {{ user.first_name }}</p>
-            <p class="profile-name">Last Name: {{ user.last_name }}</p>
-        
-            <!-- more profile information here -->
+              <!-- more profile information here -->
 
             {% if user.profile_picture %}
                 <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">

@@ -6,6 +6,8 @@ from django.utils.timezone import now
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
         user = self.model(username=username, **extra_fields)
         if password:
             user.set_password(password)
@@ -25,10 +27,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """
-    Model representing the user of the system
-    """
-
+   
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email", "name", "password"]
     EMAIL_FIELD = "email"
