@@ -40,7 +40,7 @@ pip intsall django ruff
 pip install django uritemplate
 
 
-3. #set the databse
+3. # Set the databse
 
 Ive created a file.db file in the shoe-store directory, its important to set this everytime before you run the project as it will contain all data required for the site to render all the information, if you dont set the db it wouldnt render the templates  so run this command 
 
