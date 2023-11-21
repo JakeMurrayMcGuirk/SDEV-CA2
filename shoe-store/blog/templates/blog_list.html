@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog List</title>
+</head>
+<body>
+    <h1>List of Blogs</h1>
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <a href="{% url 'blog_detail' blog.id %}">
+                    <h2>{{ blog.title }}</h2>
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
