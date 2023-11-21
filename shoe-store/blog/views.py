@@ -27,20 +27,12 @@ def blog_detail(request, blog_id):
 
 def blog_create(request):
     if request.method == 'POST':
-        form = BlogPostForm(request.POST, request.FILES)  # Assuming you have an image field in the form
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_blog = form.save(commit=False)
-            # Assuming 'author' is set through authentication or another means
-            new_blog.author = request.user  # Set the author of the blog post
-            
-            # Save the new blog post
+            new_blog.author = request.user
             new_blog.save()
-            
-            # Get the ID of the newly created blog post
-            new_blog_id = new_blog.id
-            
-            # Redirect to the detail view of the newly created blog post
-            return redirect('blog_detail', blog_id=new_blog_id)  # Adjust the URL name if necessary
+            return redirect('blog_detail', blog_id=new_blog.id)  # Redirect to the detail view of the new blog post
     else:
         form = BlogPostForm()
         
