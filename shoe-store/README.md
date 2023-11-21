@@ -1,48 +1,10 @@
 # Shoe Store
 
 
-1. Set up a Python virtual environment and install the required Python dependencies:
+Testing, Linters and code coverage 
 
-      python3 -m venv env
-
-      and download the listed modules in the read me file I have placed in the read me 
-
-
-2. Create `.env` configuration file based on `env.sample`:
-(Ill work on this myself)
-
-3. Set up the database
-
-    You'll need to create the database and set `DATABASE_URL` in
-    the configuration file before you can run migrations and use the code.
-
-    
-
-        DATABASE_URL=sqlite:///file.db
- 
- Please make sure youre in the shoe-store directry when you run this command 
-    
-
-4. Run migrations:
-
-       
-
-5. Run the server:
-
-        pipenv run python manage.py runserver
-
-6. Visit the browsable API at http://localhost:8000/api/v1/
-
-7. Access the Django admin at http://localhost:8000/admin/
-
-## Creating superuser
-
-A superuser account can be created using the Django management command:
-
-    pipenv run python manage.py createsuperuser
 
 ## Tests, linters and code coverage
-
 
 To run the test suite:
 
