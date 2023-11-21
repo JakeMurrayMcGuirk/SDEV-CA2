@@ -1,3 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'blog/css/blog_create.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
+{% endblock %}
+
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,3 +28,4 @@
     </form>
 </body>
 </html>
+{% endblock %}
