@@ -1,48 +1,74 @@
 # Shoe Store
 
-
-1. Set up a Python virtual environment and install the required Python dependencies:
-
-      python3 -m venv env
-
-      and download the listed modules in the read me file I have placed in the read me 
+# SDEV-CA2
+Hi youd need the following pip installments to run this project 
 
 
-2. Create `.env` configuration file based on `env.sample`:
-(Ill work on this myself)
+1. Create a virtual env at in the shoe-store directroy and activate it ; 
 
-3. Set up the database
+python manage.py venv env 
 
-    You'll need to create the database and set `DATABASE_URL` in
-    the configuration file before you can run migrations and use the code.
 
-    
+2. Install the required depenedacies 
 
-        DATABASE_URL=sqlite:///file.db
- 
- Please make sure youre in the shoe-store directry when you run this command 
-    
+you can just copy and paste them into your git bash or terminal system in the django SDEV-CA2,
 
-4. Run migrations:
+pip install django-cors-headers
+pip install dj-database-url
+pip install python-dotenv
+pip install djangorestframework
+pip install factory-boy
+pip install django-allauth
+pip install dj-rest-auth
+pip install django black
+pip install django-storages
+pip install django google-cloud-storage
+pip install django gunicorn
+pip install isort
+pip install django Pillow
+pip intsall django ruff
+pip install django uritemplate
 
-       
 
-5. Run the server:
+3. set the databse
 
-        pipenv run python manage.py runserver
+Ive created a file.db file in the shoe-store directory, its important to set this everytime before you run the project as it will contain all data required for the site to render all the information, if you dont set the db it wouldnt render the templates  so run this command 
 
-6. Visit the browsable API at http://localhost:8000/api/v1/
+If you are using a Unix/Linix/Mac
 
-7. Access the Django admin at http://localhost:8000/admin/
+export DATABASE_URL=sqlite:///file.db   
 
-## Creating superuser
 
-A superuser account can be created using the Django management command:
+If you are using Windows 
 
-    pipenv run python manage.py createsuperuser
+set DATABASE_URL=sqlite:///file.db
+
+
+4.  Run migrate 
+
+Then after setting the db, run the migrate command :
+
+python manage.py migrate 
+
+
+
+## Then please make sure to unset db after you finish working or set it in a venv :
+
+for mac /linix
+unset DATABASE_URL
+
+
+for windows:
+Remove-Item env:\DATABASE_URL
+
+
+
+(dont worry about this part)
+
 
 ## Tests, linters and code coverage
 
+(dont worry about this part)
 
 To run the test suite:
 
