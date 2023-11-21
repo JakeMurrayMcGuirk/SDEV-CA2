@@ -2,9 +2,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #dcdcdc;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+main {
+    flex: 1 0 auto;
 }
 
 header {
@@ -31,23 +38,17 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    color: #10100f;
 }
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #333;
-    color: #fff;
+    background-color: #333;;
+    color: #fefbfb;
+    flex-shrink: 0;
 }
 
 /* Additional Styles */
@@ -63,3 +64,4 @@ header nav ul li {
 main {
     line-height: 1.6;
 }
+

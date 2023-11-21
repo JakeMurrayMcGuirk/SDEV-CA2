@@ -6,4 +6,4 @@ from .models import BlogPost
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'content', 'pub_date', 'image']  # Add or remove fields as needed
+        fields = ['author','title', 'content', 'pub_date']  # Add or remove fields as needed

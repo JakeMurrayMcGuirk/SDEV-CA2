@@ -4,17 +4,24 @@
 {% block title %}Home{% endblock %}
 
 {% block styles %}
+
+<style>
+  
+    .feature a {
+        text-decoration: none; 
+        color: inherit; 
+    }
+</style>
+
     <link rel="stylesheet" href="{% static 'user/css/home.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
-    
-    
 {% endblock %}
 
 {% block content %}
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Our shoe Store</h1>
-            <p>Discover new sneaker releases</p>
+            <p>Purchase New Sneakers</p>
             <a href="{% url 'product_list' %}" class="btn btn-primary">Get Started</a>
         </div>
     </section>
@@ -22,8 +29,10 @@
     <section class="features">
         <div class="feature">
             <i class="fas fa-users"></i>
-            <h2>Purchase Sneakers</h2>
-            <p>Purchase sneakers from a wide range of outlets from us.</p>
+            <a href="{% url 'blog_list' %}">
+                <h2>Visit our sneaker blog</h2>
+                <p>Stay updated with exclusive insights into the sneaker culture.</p>
+            </a>
         </div>
         <div class="feature">
             <i class="fas fa-cog"></i>
@@ -33,7 +42,7 @@
         <div class="feature">
             <i class="fas fa-heart"></i>
             <h2>Discover new sneaker releases</h2>
-            <p>We keep updated on lastes sneaker drops </p>
+            <p>We keep updated on latest sneaker drops</p>
         </div>
     </section>
 {% endblock %}

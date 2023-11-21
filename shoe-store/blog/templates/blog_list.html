@@ -2,10 +2,11 @@
 {% load static %}
 
 {% block styles %}
+
     <link rel="stylesheet" href="{% static 'blog/css/blog_list.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
-{% endblock %}
 
+{% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -15,36 +16,36 @@
     <title>Blog List</title>
 </head>
 <body>
-    <h1>List of Blogs</h1>
-    
-    <!-- Button to create a new blog post -->
-    {% if user.is_authenticated %}
-        <a href="{% url 'blog_create' %}">
-            <button>Create Blog Post</button>
-        </a>
-    {% endif %}
-    
-    <ul>
-        {% for blog in blogs %}
-            <li>
-                <a href="{% url 'blog_detail' blog.id %}">
-                    <h2>{{ blog.title }}</h2>
-                    {% if blog.image %}
-                        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+    <main>
+        <h1>List of Blogs</h1>
+        
+        <!-- Button to create a new blog post -->
+        {% if user.is_authenticated %}
+            <a href="{% url 'blog_create' %}">
+                <button id ="create-blog-btn">Create Blog Post</button>
+            </a>
+        {% endif %}
+        
+        <ul class="blog-list">
+            {% for blog in blogs %}
+                <li>
+                    <a href="{% url 'blog_detail' blog.id %}">
+                        <h2>{{ blog.title }}</h2>
+                        {% if blog.image %}
+                            <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                        {% endif %}
+                    </a>
+                    <!-- Button to delete the blog post -->
+                    {% if user.is_authenticated and user == blog.author %}
+                        <form method="post" action="{% url 'blog_delete' blog.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Delete Blog</button>
+                        </form>
                     {% endif %}
-                </a>
-                <!-- Button to delete the blog post -->
-                {% if user.is_authenticated and user == blog.author %}
-                    <form method="post" action="{% url 'blog_delete' blog.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Delete Blog</button>
-                    </form>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 </html>
-
 {% endblock %}
-

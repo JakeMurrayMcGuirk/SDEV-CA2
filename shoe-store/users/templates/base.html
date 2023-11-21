@@ -14,7 +14,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home &nbsp;&nbsp; </a></li>
-                <li><a href="{% url 'blog_list' %}">Blogs &nbsp;&nbsp; </a></li>
+                <li><a href="{% url 'blog_list' %}">Blog &nbsp;&nbsp; </a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'dashboard' %}">Dashboard &nbsp; &nbsp; </a></li>
                     <li><a href="{% url 'profile' %}">Profile &nbsp; &nbsp; </a></li>
