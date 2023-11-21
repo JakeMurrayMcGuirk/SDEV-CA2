@@ -45,3 +45,14 @@ def blog_create(request):
         form = BlogPostForm()
         
     return render(request, 'blog_create.html', {'form': form})
+
+
+def blog_delete(request, blog_id):
+    blog = get_object_or_404(BlogPost, pk=blog_id)
+    
+    # Check if the current user is the author of the blog post
+    if request.user == blog.author:
+        # Delete the blog post
+        blog.delete()
+    
+    return redirect('blog_list')  # Redirect to the blog list after deletion
