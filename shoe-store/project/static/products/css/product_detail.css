@@ -67,3 +67,16 @@ font-weight: bold;
     text-transform: uppercase; 
     font-weight: bold; 
 }
+.add-to-wishlist-btn {
+    padding: 1em 2em;
+    margin-top: 1em; 
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase; 
+    font-weight: bold; 
+
+
+}
