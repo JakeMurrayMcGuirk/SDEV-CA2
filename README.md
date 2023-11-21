@@ -1,11 +1,11 @@
 # SDEV-CA2
 
-1. Create a virtual env at in the shoe-store directroy and activate it ; 
+1.  # Create a virtual env at in the shoe-store directroy and activate it ; 
 
 python manage.py venv env 
 
 
-2. Install the required depenedacies 
+2. # Install the required depenedacies 
 
 you can just copy and paste them into your git bash or terminal system in the django SDEV-CA2,
 
@@ -40,7 +40,7 @@ pip intsall django ruff
 pip install django uritemplate
 
 
-3. set the databse
+3. #set the databse
 
 Ive created a file.db file in the shoe-store directory, its important to set this everytime before you run the project as it will contain all data required for the site to render all the information, if you dont set the db it wouldnt render the templates  so run this command 
 
@@ -54,7 +54,7 @@ If you are using Windows
 set DATABASE_URL=sqlite:///file.db
 
 
-4.  Run migrate 
+4.  # Run migrate 
 
 Then after setting the db, run the migrate command :
 
