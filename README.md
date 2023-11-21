@@ -1,6 +1,4 @@
 # SDEV-CA2
-Hi youd need the following pip installments to run this project 
-
 
 1. Create a virtual env at in the shoe-store directroy and activate it ; 
 
