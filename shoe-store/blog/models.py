@@ -25,6 +25,13 @@ class BlogPost(models.Model):
         verbose_name="Content",
         help_text="The main content of the blog post",
     )
+    image = models.ImageField(
+        upload_to='blogmodel/images',
+        null=True,
+        blank=True,
+        verbose_name="Image",
+        help_text="Image related to the blog post",
+    )
     pub_date = models.DateTimeField(
     auto_now_add=True,
     null=False,
@@ -35,3 +42,6 @@ class BlogPost(models.Model):
     def __str__(self):
         """String representation of a BlogPost instance."""
         return self.title
+
+
+    
