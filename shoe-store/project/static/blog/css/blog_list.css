@@ -79,3 +79,47 @@ img {
     color: #000;
 }
 
+
+
+.delete-blog-btn{
+
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #E60100;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+
+
+
+
+}
+
+.delete-blog-btn:hover {
+    background-color: #E60100;
+    color: #FDD017;
+}
+
+
+
+#delete-blog-btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: #E60100;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#delete-blog-btn:hover {
+    background-color: #FDD017;
+    color: #000;
+}

@@ -39,7 +39,7 @@
                     {% if user.is_authenticated and user == blog.author %}
                         <form method="post" action="{% url 'blog_delete' blog.id %}">
                             {% csrf_token %}
-                            <button type="submit">Delete Blog</button>
+                            <button id="delete-blog-btn">Delete Blog</button>
                         </form>
                     {% endif %}
                 </li>

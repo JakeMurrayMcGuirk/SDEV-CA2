@@ -26,10 +26,11 @@ class BlogPost(models.Model):
         help_text="The main content of the blog post",
     )
     pub_date = models.DateTimeField(
-        null=False,
-        verbose_name="publication date ",
-        help_text="the date when the blog post ",
-    )
+    auto_now_add=True,
+    null=False,
+    verbose_name="publication date",
+    help_text="the date when the blog post was published",
+)
 
     def __str__(self):
         """String representation of a BlogPost instance."""
