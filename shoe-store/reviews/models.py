@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class ProductReview(models.Model):
     """
@@ -44,3 +44,24 @@ class ProductReview(models.Model):
     def __str__(self):
         """String representation of a ProductReview instance."""
         return self.review_text
+    
+    def get_absolute_url(self):
+        return reverse('create_review', args=[str(self.id)])
+    
+
+
+
+
+'''
+# TEST MODEL
+class TestModel(models.Model):
+    title = models.CharField(max_length=200)
+    body=models.TextField()
+
+    def __str__(self):
+        """String representation of a ProductReview instance."""
+        return self.review_text
+    
+    def get_absolute_url(self):
+        return reverse('create_review', args=[str(self.id)])
+        '''

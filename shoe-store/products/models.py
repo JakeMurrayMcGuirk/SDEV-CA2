@@ -1,6 +1,7 @@
 from datetime import date
 from decimal import Decimal
 from django.db import models
+from django.urls import reverse # Allows web page to redirect back to product details page when review submitted
 
 class ProductModel(models.Model):
     category = models.ForeignKey(
@@ -53,6 +54,9 @@ class ProductModel(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('product_detail', args=[str(self.id)])
 
 
 class Category(models.Model):

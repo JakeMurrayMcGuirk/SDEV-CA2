@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Review{% endblock title %}
+{% block content %}
+<form action="" method="POST">
+    <h2>Submit Review</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+   <!--- <label for="product">{{product.name}}</label>
+    <input type="text" id="product" name="product" required><br><br>
+
+    <label for="user">Content:</label>
+    <textarea id="user" name="user" required></textarea><br><br>
+
+    <label for="review_text">Review Text</label>
+    <textarea id="review_text" name="review_text" required></textarea><br><br>
+--->
+
+    <input type="submit" value="Submit Review"/>
+</form>
+{% endblock content %}

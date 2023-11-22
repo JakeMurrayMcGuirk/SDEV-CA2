@@ -48,7 +48,12 @@
             {% else %}
                 <p>No reviews yet.</p>
             {% endif %}
-            
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'create_review' %}">Leave Review</a>
+            {% else %}
+                <p>Must be logged in to leave a review.</p>
+            {% endif %}
             <!-- Add your review form here -->
         </section>
     </main>
