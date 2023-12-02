@@ -45,6 +45,12 @@
             {% endif %}
             
             <!-- Add your review form here -->
+            {% if user.is_authenticated %}
+            <form action="submit-review" method="POST">Submit Review</a>
+                <a href="{% url 'review_new' product.pk %}">NEW REVIEW</a>
+            {% else %}
+            <p>Must be logged in to post review.</p>
+            {% endif %}
         </section>
     </main>
 </body>

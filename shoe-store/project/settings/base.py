@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "wishlist.apps.WishlistConfig",
     "users.apps.UsersConfig",
     "openapi.apps.OpenAPIConfig",
+    "crispy_forms",
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -191,3 +193,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
