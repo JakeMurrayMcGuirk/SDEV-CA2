@@ -9,3 +9,4 @@ class ProductSearchViewSet(viewsets.ModelViewSet):
     queryset = ProductSearch.objects.all()
     serializer_class = ProductSearchSerializer
     permission_classes = (permissions.ProductSearchPermission,)
+

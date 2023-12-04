@@ -30,7 +30,6 @@ class Cart(models.Model):
         help_text="the time stamp indicating when the shopping cart was last updated ",
     )
 
-
 class CartItem(models.Model):
     """
     Represents individual items within the shopping cart
@@ -58,3 +57,15 @@ class CartItem(models.Model):
         verbose_name="quantity ",
         help_text="the quantity of the products in this cart item ",
     )
+
+
+
+
+
+
+
+
+
+
+
+

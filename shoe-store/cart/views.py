@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-
+from .models import ProductsAdded
 from . import permissions
 from .models import Cart, CartItem
 from .serializers import CartItemSerializer, CartSerializer
@@ -18,3 +18,5 @@ class CartItemViewSet(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     permission_classes = (permissions.CartItemPermission,)
+
+
