@@ -5,7 +5,7 @@ from .models import Category, ProductModel
 from .serializers import CategorySerializer, ProductModelSerializer
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
-from .models import ProductReview
+from .models import ProductReview, ProductModel
 from .forms import ProductReviewForm
 
 
@@ -101,14 +101,14 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 
 def product_detail(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(ProductModel, pk=product_id)
     reviews = product.product_reviews.all()
     form = ProductReviewForm()
 
     return render(request, 'product_detail.html', {'product': product, 'reviews': reviews, 'form': form})
 
 def submit_review(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(ProductModel, pk=product_id)
 
     if request.method == 'POST':
         form = ProductReviewForm(request.POST)

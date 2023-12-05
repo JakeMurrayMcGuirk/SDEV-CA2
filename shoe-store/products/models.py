@@ -1,6 +1,7 @@
 from datetime import date
 from decimal import Decimal
 from django.db import models
+from django.contrib.auth.models import User
 
 class ProductModel(models.Model):
     category = models.ForeignKey(
@@ -61,6 +62,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
 class ProductReview(models.Model):
     product = models.ForeignKey(
         "products.ProductModel",
@@ -71,7 +75,7 @@ class ProductReview(models.Model):
         help_text="the product for which the review is submitted",
     )
     user = models.ForeignKey(
-       
+        User,
         related_name="product_reviews",
         on_delete=models.CASCADE,
         null=False,

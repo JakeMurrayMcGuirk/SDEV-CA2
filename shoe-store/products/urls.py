@@ -2,6 +2,7 @@ from rest_framework import routers
 from django.urls import path, include
 from .views import CategoryViewSet, ProductModelViewSet, CategoryListView, ProductListView, ProductDetailView, AllProductListView
 from cart.views import add_to_cart 
+from . import views
 
 products_router = routers.SimpleRouter()
 products_router.register(r"products/category", CategoryViewSet)
