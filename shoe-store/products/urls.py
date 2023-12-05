@@ -15,4 +15,5 @@ urlpatterns = [
     path('categories/<int:pk>/products/', ProductListView.as_view(), name='product_list'),
     path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('api/v1/products/add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('submit_review/', views.submit_review, name='submit_review'),
 ]

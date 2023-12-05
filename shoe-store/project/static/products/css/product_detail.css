@@ -80,3 +80,18 @@ font-weight: bold;
 
 
 }
+
+.star-rating {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star-rating .fa-star {
+    transition: color 0.2s;
+}
+
+.star-rating .fa-star:hover,
+.star-rating .fa-star.active {
+    color: #f8ce0b;
+}

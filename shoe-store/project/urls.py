@@ -38,7 +38,6 @@ urlpatterns = [
     path("api/v1/", include(router.urls)),
     path("cart/", include("cart.urls", namespace="cart")),
     path('api/v1/products/cart/', include('cart.urls')),
-    path('api/v1/reviews/', include('reviews.urls')), 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
 

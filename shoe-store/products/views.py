@@ -1,9 +1,13 @@
 from rest_framework import decorators, parsers, response, status, viewsets
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from . import permissions
 from .models import Category, ProductModel
 from .serializers import CategorySerializer, ProductModelSerializer
 from django.views.generic import ListView, DetailView
+from django.shortcuts import render, redirect
+from .models import ProductReview
+from .forms import ProductReviewForm
+
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -95,3 +99,23 @@ class ProductDetailView(DetailView):
     model = ProductModel
     template_name = 'product_detail.html'
     context_object_name = 'product'
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    reviews = product.product_reviews.all()
+    form = ProductReviewForm()
+
+    return render(request, 'product_detail.html', {'product': product, 'reviews': reviews, 'form': form})
+
+def submit_review(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = ProductReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.product = product
+            review.save()
+            return redirect('product_detail', product_id=product_id)
+    return redirect('home')
