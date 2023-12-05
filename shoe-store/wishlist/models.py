@@ -36,7 +36,7 @@ class Wishlistitem(models.Model):
         db_table = 'WishlistItem'
     
     def __str__(self):
-        return self.product
+        return self.product.name
 
 class Wishlist(models.Model):
     wishlist_id = models.CharField(max_length=250, blank=True)

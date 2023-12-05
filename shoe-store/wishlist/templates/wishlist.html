@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
-{% block metadescription %}
-This is the wishlist page.
-{% endblock %}
+
 {% block title %}
 Wishlist - Shoe Store
 {% endblock %}
+
+
 {% block content %}
+
+
+
 {% if not wishlist_items %}
 <div>
     <div class="text-center">
@@ -17,6 +20,8 @@ Wishlist - Shoe Store
         <br>
     </div>
 </div>
+
+
 {% else %}
 <div>
     <div class="text-center">
@@ -40,10 +45,10 @@ Wishlist - Shoe Store
             <tbody>
                 {% for wishlist_item in wishlist_items %}
                 <tr>
-                    <td>
+                    <!--    <td>
                         <a href="{{wishlist_item.product.get_url}}"><img src="{{wishlist_item.product.image.url}}"
                                 alt="" class="float-left rounded custom_image"></a>
-                    </td>
+                    </td>   -->
                     <td class="text-left">
                         {{wishlist_item.product.name}}
                     </td>

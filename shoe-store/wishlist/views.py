@@ -26,33 +26,37 @@ class CreateWishList(CreateView):
 
 
 def _wishlist_id(request):
-    #wishlist = request.session.session_key
-    wishlist="wishlist/"
-    #wishlist = "self.request.user/wishlist/"
+    wishlist=request.user
     if not wishlist:
-        wishlist="wishlist/"
-        #wishlist = request.user.create()
+        wishlist=request.user
+    print("Wishlist ID:",wishlist)
     return wishlist
+
+
+
+def wishlist_detail(request):
+    try:
+        wishlist = Wishlist.objects.get(wishlist_id=_wishlist_id(request))
+        wishlist_items = Wishlistitem.objects.filter(wishlist=wishlist)
+    except ObjectDoesNotExist:
+        wishlist_items = []  # Sets wishlist_items to empty list if wishlist doesn't exist
+    
+    print("WishlistItems:", wishlist_items) #DEBUGGING
+    return render(request, 'wishlist.html', {'wishlist_items': wishlist_items})
+ # I have spent 2 hours trying to get this to work. The items are going up to the database no bothers, but for some reason they aren't displaying on the website (api/v1/wishlist).
+
 
 
 
 def add_wishlist(request, pk):
     product = ProductModel.objects.get(pk=pk)
+
     try:
-        wishlist = Wishlist.objects.get(wishlist_id = _wishlist_id(request))
+        user = request.user
+        wishlistObject = Wishlistitem(user=user, product=product)
+        wishlistObject.save()
+        return redirect('wishlist:wishlist_detail')
     except Wishlist.DoesNotExist:
         wishlist = Wishlist.objects.create(wishlist_id = _wishlist_id(request))
         wishlist.save()
-    return redirect('wishlist:wishlist_detail')
-
-
-
-def wishlist_detail(request, total=0, counter=0, wishlist_items = None):
-    try:
-        wishlist = Wishlist.objects.get(wishlist_id=_wishlist_id(request))
-        wishlist_items=Wishlistitem.objects.filter(wishlist=wishlist)
-        for wishlist_item in wishlist_items:
-            counter+=wishlist_item.quantity
-    except ObjectDoesNotExist:
-        pass
-    return render(request, 'wishlist.html', {'wishlist_items':wishlist_items,'total':total,'counter':counter})
+        return redirect('wishlist:wishlist_detail')
