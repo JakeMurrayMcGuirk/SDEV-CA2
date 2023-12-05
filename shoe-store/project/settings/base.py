@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "wishlist.apps.WishlistConfig",
     "users.apps.UsersConfig",
     "openapi.apps.OpenAPIConfig",
+    "stripe",
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "cart.context_processors.counter",
             ]
         },
     }
@@ -193,3 +195,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID=1;
+STRIPE_SECRET_KEY = 'sk_test_51OG1ZhIOvzBjhJZOy3Pdp9U2CptewQyTwCxUHqrXChFPSbHXrJg7JkEExzJNU6LPpR2MNwZZNS1wDihpg52n8eyX00zL7LZw32'
+STRIPE_PUBLISHABLE_KEY = 'sk_test_51OG1ZhIOvzBjhJZOy3Pdp9U2CptewQyTwCxUHqrXChFPSbHXrJg7JkEExzJNU6LPpR2MNwZZNS1wDihpg52n8eyX00zL7LZw32'
