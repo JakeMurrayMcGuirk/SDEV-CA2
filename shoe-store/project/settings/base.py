@@ -33,7 +33,6 @@ INSTALLED_APPS = [
      "blog.apps.BlogConfig",
     "cart.apps.CartConfig",
     "notification.apps.NotificationConfig",
-    "orders.apps.OrdersConfig",
     "products.apps.ProductsConfig",
     "reviews.apps.ReviewsConfig",
     "search.apps.SearchConfig",

@@ -2,7 +2,6 @@
 from django.contrib import admin
 from django.urls import include, path
 from notification.urls import notification_router
-from orders.urls import orders_router
 from products.urls import products_router
 from rest_framework import routers
 from reviews.urls import reviews_router
@@ -17,7 +16,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.registry.extend(blog_router.registry)
 router.registry.extend(notification_router.registry)
-router.registry.extend(orders_router.registry)
+
 router.registry.extend(products_router.registry)
 router.registry.extend(reviews_router.registry)
 router.registry.extend(search_router.registry)
