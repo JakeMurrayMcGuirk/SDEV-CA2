@@ -1,18 +1,15 @@
-from rest_framework import routers
-from .views import CartItemViewSet, CartViewSet
-from django.urls import path, include
+from django.urls import path
 from . import views
-from django.urls import path 
-
-cart_router = routers.SimpleRouter()
-cart_router.register(r"cart/cart", CartViewSet)
-cart_router.register(r"cart/cart-item", CartItemViewSet)
-
+app_name = 'carts'
 urlpatterns = [
-    path('api/', include(cart_router.urls)), 
-    path('cart/', views.cart, name='cart_list'),
-    path('cart/detail', views.cart_detail, name='cart_detail'),
-    path('cart/<uuid:product_id/', views.cart_remove, name='cart_remove'),
-
+    
+    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart-detail/', views.cart_detail, name='cart_detail'),
+    path('remove-from-cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('order-confirmation/', views.order_confirmation, name='order_confirmation'),
+    path('order-list/', views.order_list, name='order_list'),
+    path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
 ]
-urlpatterns += cart_router.urls
+
+  
