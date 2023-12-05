@@ -8,7 +8,11 @@ class Cart(models.Model):
     """
     represents the shopping cart for each user
     """
+    cart_id = models.CharField(max_length=250, blank=True)
 
+    def __str__(self):
+        return self.cart_id
+    
     user = models.OneToOneField(
         "users.User",
         related_name="cart",
@@ -58,7 +62,11 @@ class CartItem(models.Model):
         help_text="the quantity of the products in this cart item ",
     )
 
-
+    def sub_total(self):
+        return self.product.price * self.quantity
+    
+    def __str__(self):
+        return self.product
 
 
 

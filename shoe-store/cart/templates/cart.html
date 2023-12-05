@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+    This is the shopping cart page. Proceed to review your items and place the order.
+{% endblock %}
+{% block title %}
+    Cart - Perfect Cushion Store
+{% endblock %}
+{% block content %}
+    {% if not cart_items %}
+        <div>
+            <div class="text-center">
+                <br>
+                <h1 class="text-center my_title">
+                    Your shopping cart is empty
+                </h1>
+                <br>
+                <p class="text-center">
+                    Please click <a href="{% url 'product.list' %}">here</a> to continue shopping.
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <div class="text-center">
+                <br>
+                <h1 class="text-center my_title">
+                    Your shopping cart
+                </h1>
+                <br>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <table class="table my_custom_table">
+                    <thead class="my_custom_thead">
+                        <tr>
+                            <th colspan="5">
+                                Your items
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {% for cart_item in cart_items %}
+                            <tr>
+                                <td>
+                                    {% if product.image %}
+                                    <a href="{{cart_item.product.get_url}}"><img src="{{cart_item.product.image.url}}"
+                                    alt="" class="float-left rounded custom_image"></a>
+                                    {% endif %}
+                                </td>
+                                <td class="text-left">
+                                    {{cart_item.product.name}}
+                                    <br>
+                                    Unit Price: €{{cart_item.product.price}}
+                                    <br>
+                                    Qty: {{cart_item.quantity}} x €{{cart_item.product.price}}
+                                </td>
+                                <td>
+                                    €{{cart_item.sub_total}}
+                                </td>
+                                {% if cart_item.quantity < cart_item.product.stock %}
+                                    <td>
+                                        <a href="{% url 'add_cart' cart_item.product.id %}" class="custom_a"><i class="fas fa-plus-circle custom_icon"></i></a>&nbsp;
+                                        <a href="{% url 'cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle custom_icon"></i></a>&nbsp;
+                                        <a href="{% url 'full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        &nbsp;<a href="{% url 'cart_remove' cart_item.product.id %}" class="custom_a"><i class="fas fa-minus-circle
+                                        custom_icon"></i></a>&nbsp;
+                                        <a href="{% url 'full_remove' cart_item.product.id %}" class="custom_icon"><i class="fas fa-trash-alt custom_icon"></i></a>
+                                    </td>
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <table class="table my_custom_table">
+                    <thead class="my_custom_thead">
+                        <tr>
+                            <th>
+                                Checkout
+                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Please review your shopping cart items before proceeding with the order payment.
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                
+                        </tbody>
+                    </table>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{ data_key }}"
+                                data-amount="{{ stripe_total }}"
+                                data-name="Perfect Cushion Shop"
+                                data-description="{{ description }}"
+                                data-image="{% static 'images/logo.png' %}"
+                                data-locale="auto"
+                                data-currency="eur"
+                                data-shipping-address="true"
+                                data-billing-address="true"
+                                data-zip-code="true">
+                            </script>
+                        </form>
+
+                    <div class="mx-auto">
+                        <a href="{% url 'pruduct.list' %}" class="btn btn-secondary btn-block
+                        my_custom_button">Continue
+                        Shopping</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+    {% endif %}
+{% endblock %}
+
+
+
+
+" delete"
+
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="{% url 'product.list' %}" class="btn btn-outline-dark">&#x2190;Continue Shopping</a>
+
+            <br>
+            <br>
+
+            <table class="table">
+                <tr>
+                    <th><h5>Items: <strong>3</strong></5></th>
+                    <th><h5>Total: <strong>$43</strong></5></th>
+                    <th>
+                        <a style="float:right; margin:5px" class="btn btn-success" href="{% url 'checkout' %}">&#x2190;Checkout</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Items</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+
+            {% for product in product %}
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="{{product.imageURL}}"></div>
+                <div style="flex:2">{{product.name}}</div>
+                <div style="flex:1">${{product.price|floatformat:2}}</div>                
+                <div style="flex:1">
+                    <p class="quantity">{{quantity}}</p>
+						<div class="quantity">
+							<img class="chg-quantity" src="{% static  'images/arrow-up.png' %}">
+					
+							<img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
+						</div>
+                </div>
+                <div style="flex:1">$40</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
