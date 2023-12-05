@@ -1,4 +1,4 @@
-from cart.urls import cart_router
+
 from django.contrib import admin
 from django.urls import include, path
 from notification.urls import notification_router
@@ -16,7 +16,6 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.registry.extend(blog_router.registry)
-router.registry.extend(cart_router.registry)
 router.registry.extend(notification_router.registry)
 router.registry.extend(orders_router.registry)
 router.registry.extend(products_router.registry)
@@ -36,10 +35,11 @@ urlpatterns = [
     path("api/v1/auth/register/", include("dj_rest_auth.registration.urls")),
     path("api/v1/", include("openapi.urls")),
     path("api/v1/", include(router.urls)),
+    path("cart/", include("cart.urls", namespace="cart")),
+    path('api/v1/products/cart/', include('cart.urls')),
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
 
 
 # path('api/v1/orders/', include('orders.urls')),  
 # path('api/v1/notifications/', include('notification.urls')),  
-# path('api/v1/cart/', include('cart.urls')),  

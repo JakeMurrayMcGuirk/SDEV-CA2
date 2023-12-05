@@ -33,7 +33,14 @@
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
                 <input type="submit" value="Save Settings" class="btn btn-primary">
+                
+                
+
             </form>
+
+            <div style="margin-top: 20px;">
+                <a href="{% url 'account_delete' %}" class="btn btn-danger">Delete Account</a>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -15,7 +15,7 @@ urlpatterns = [
     path('settings/', user_settings, name='settings'),
     path('preferences/', user_preferences, name='preferences'),
     path('delete/', account_deletion, name='account_delete'),
-    path('dashboard/', dashboard, name='dashboard'),
+    
 ]
 
 urlpatterns += users_router.urls

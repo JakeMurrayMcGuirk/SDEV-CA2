@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="max-width: 600px; margin: auto; text-align: center; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <h2 style="margin-bottom: 20px; font-weight: bold; color: #333;">Order List</h2>
+        {% for order in orders %}
+            <div style="border: 1px solid #ddd; margin-bottom: 10px; padding: 10px; text-align: left;">
+                <p style="margin: 5px 0;font-weight: bold;">Order ID: {{ order.id }}</p>
+                <p style="margin: 5px 0; font-weight: bold;">Total Cost: {{ order.order_total }}</p>
+                <a href="{% url 'cart:order_detail' order.id %}" style="color: #E60100; text-decoration: none;">View Details</a>
+            </div>
+        {% empty %}
+            <p style="font-weight: bold; color: #555;">No orders found.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -5,26 +5,24 @@
     {% load static %}
     {% block styles %}
     <link rel="stylesheet" href="{% static 'user/css/base.css' %}">
-    
-{% endblock %}
-
+    {% endblock %}
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home &nbsp;&nbsp; </a></li>
-                <li><a href="{% url 'blog_list' %}">Blog &nbsp;&nbsp; </a></li>
+            <ul style="list-style: none; padding: 0;">
+                <li style="display: inline; margin-right: 20px;"><a href="{% url 'home' %}">Home</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="{% url 'blog_list' %}">Blog</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="{% url 'cart:cart_detail' %}">Cart</a></li> 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'dashboard' %}">Dashboard &nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'profile' %}">Profile &nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'settings' %}">Settings &nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'preferences' %}">Preferences &nbsp;  </a></li>
-                    <li><a href="{% url 'account_delete' %}">&nbsp; &nbsp; Delete Account</a></li>
-                    <li><a href="{% url 'logout' %}">&nbsp; &nbsp; Logout</a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'profile' %}">Profile</a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'cart:order_list' %}">Orders</a></li> 
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'settings' %}">Settings</a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'preferences' %}">Preferences</a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'signup' %}">Signup&nbsp; &nbsp; </a></li>
-                    <li><a href="{% url 'login' %}">Login&nbsp; &nbsp; </a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'signup' %}">Signup</a></li>
+                    <li style="display: inline; margin-right: 20px;"><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -36,7 +34,7 @@
     </main>
 
     <footer>
-        <p> Our Shoe store site</p> &copy; 2023</p>
+        <p>Our Shoe store site &copy; 2023</p>
     </footer>
 </body>
 </html>
