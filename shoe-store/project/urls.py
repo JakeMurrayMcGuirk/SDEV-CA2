@@ -26,8 +26,6 @@ router.registry.extend(users_router.registry)
 
 urlpatterns = [
     path('', include('users.urls')),
-    path("api/v1/cart/", include( "cart.urls")),
-    path("api/v1/order/", include( "order.urls")),
     path('api/v1/products/', include('products.urls')), 
     path('api/v1/blog/', include('blog.urls')), 
     path("admin/doc/", include("django.contrib.admindocs.urls")),
