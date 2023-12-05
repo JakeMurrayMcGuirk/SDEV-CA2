@@ -2,7 +2,7 @@ from datetime import date
 
 from django.db import models
 from django.utils.timezone import now
-
+from products.models import ProductModel
 
 class Wishlistitem(models.Model):
     """
@@ -31,3 +31,20 @@ class Wishlistitem(models.Model):
         verbose_name="added timestamp ",
         help_text="the timestamp when the product was added to the wishlist ",
     )
+
+    class Meta:
+        db_table = 'WishlistItem'
+    
+    def __str__(self):
+        return self.product
+
+class Wishlist(models.Model):
+    wishlist_id = models.CharField(max_length=250, blank=True)
+    date_added = models.DateField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'Wishlist'
+        ordering = ['date_added']
+    
+    def __str__(self):
+        return self.cart_id

@@ -9,4 +9,5 @@ from django.urls import path
 from .views import CreateReviewView
 urlpatterns=[
     path('review/new/',CreateReviewView.as_view(),name='review_new'),
+    #path('wishlist/new/',)
 ]

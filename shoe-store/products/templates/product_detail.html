@@ -24,6 +24,7 @@
                 <p>Description: {{ product.description }}</p>
                 <!-- Additional product details -->
                 <button class="add-to-cart-btn">Add to Cart</button>
+                <button class="add-to-wishlist-btn" href="{% url 'wishlist:add_wishlist' product.pk %}">Add to Wishlist</button>
                 <button class="back-to-products-btn" onclick="window.history.back()">Back to Products</button>
             </div>
         </div>

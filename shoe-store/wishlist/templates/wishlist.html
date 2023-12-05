@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+This is the wishlist page.
+{% endblock %}
+{% block title %}
+Wishlist - Shoe Store
+{% endblock %}
+{% block content %}
+{% if not wishlist_items %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my_title">
+            Your wishlist is empty
+        </h1>
+        <br>
+    </div>
+</div>
+{% else %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my_title">
+            Your wishlist
+        </h1>
+        <br>
+    </div>
+</div>
+<div class="row mx-auto">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <table class="table my_custom_table">
+            <thead class="my_custom_thead">
+                <tr>
+                    <th colspan="5">
+                        Your items
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wishlist_item in wishlist_items %}
+                <tr>
+                    <td>
+                        <a href="{{wishlist_item.product.get_url}}"><img src="{{wishlist_item.product.image.url}}"
+                                alt="" class="float-left rounded custom_image"></a>
+                    </td>
+                    <td class="text-left">
+                        {{wishlist_item.product.name}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div class="mx-auto">
+            <a href="{% url 'products:product_list' %}" class="btn btn-secondary btn-block
+ my_custom_button">Continue
+                Shopping</a>
+        </div>
+    </div>
+</div>
+<br>
+{% endif %}
+{% endblock %}
