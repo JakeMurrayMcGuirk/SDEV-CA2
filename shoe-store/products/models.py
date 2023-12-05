@@ -2,6 +2,7 @@ from datetime import date
 from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class ProductModel(models.Model):
     category = models.ForeignKey(
@@ -68,20 +69,21 @@ class Category(models.Model):
 class ProductReview(models.Model):
     product = models.ForeignKey(
         "products.ProductModel",
-        related_name="product_reviews",
+        related_name="product_reviews_in_products",  
         on_delete=models.CASCADE,
         null=False,
         verbose_name="product",
         help_text="the product for which the review is submitted",
     )
     user = models.ForeignKey(
-        User,
-        related_name="product_reviews",
-        on_delete=models.CASCADE,
-        null=False,
-        verbose_name="user",
-        help_text="the user who submitted the review",
-    )
+    settings.AUTH_USER_MODEL,
+    related_name="product_reviews",
+    on_delete=models.CASCADE,
+    null=False,
+    verbose_name="user",
+    help_text="the user who submitted the review",
+)
+
     rating = models.IntegerField(
         null=False,
         default=1,
