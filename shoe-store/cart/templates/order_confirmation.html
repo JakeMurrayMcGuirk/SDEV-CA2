@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="max-width: 600px; margin: auto; text-align: center; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <h2 style="margin-bottom: 20px; font-weight: bold; color: #333;">Order Confirmation</h2>
+        {% if order %}
+            <p style="font-weight: bold;">Order ID: <span style="font-weight: normal;">{{ order.id }}</span></p>
+            <div>
+                {% for item in items %}
+                    <div style="border: 1px solid #ddd; margin-bottom: 10px; padding: 10px; text-align: left;">
+                        <p style="margin: 5px 0;">Product: {{ item.product.name }}</p>
+                        <p style="margin: 5px 0;">Quantity: {{ item.quantity }}</p>
+                        <p style="margin: 5px 0; font-weight: bold;">Price: ${{ item.product.price }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <h3 style="margin-top: 20px; font-weight: bold; color: #333;">Total Cost: <span style="font-weight: normal;">{{ total_cost }}</span></h3>
+        {% else %}
+            <p style="font-weight: bold; color: #555;">No recent orders found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

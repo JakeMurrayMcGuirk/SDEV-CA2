@@ -6,10 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ product.name }}</title>
-    {% block script %}
-        <script src="{% static 'products/js/product_detail.js' %}"></script>
-    {% endblock %}
-
     {% block style %}
         <link rel="stylesheet" href="{% static 'products/css/product_detail.css' %}">
     {% endblock %}
@@ -26,31 +22,16 @@
                 <p>Price: ${{ product.price }}</p>
                 <p>Stock: {{ product.stock }}</p>
                 <p>Description: {{ product.description }}</p>
-                <!-- Additional product details -->
-                <button class="add-to-cart-btn" onclick="addToCart('{{ product.id|safe }}')">Add to Cart</button>
+                <!-- Add to Cart Form -->
+                <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                </form>
                 <button class="add-to-wishlist-btn" onclick="addToWishlist('{{ product.id|safe }}')">Add to Wishlist</button>
-    <button class="back-to-products-btn" onclick="window.history.back()">Back to Products</button>
+                <button class="back-to-products-btn" onclick="window.history.back()">Back to Products</button>
             </div>
         </div>
         
-        <!-- Reviews Section -->
-        <section class="reviews-section">
-            <h2>Product Reviews</h2>
-            {% if product.product_reviews.all %}
-                <ul>
-                    {% for review in product.product_reviews.all %}
-                        <li>
-                            <strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5:
-                            <p>{{ review.review_text }}</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No reviews yet.</p>
-            {% endif %}
-            
-            <!-- Add your review form here -->
-        </section>
     </main>
 </body>
 </html>

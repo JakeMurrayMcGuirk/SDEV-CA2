@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="max-width: 600px; margin: auto; text-align: center; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <h2 style="margin-bottom: 20px; font-weight: bold; color: #333;">Cart Details</h2>
+        {% for item in cart_items %}
+            <div style="border: 1px solid #ddd; margin-bottom: 10px; padding: 10px; text-align: left;">
+                <p style="margin: 5px 0; font-weight: bold;">Product: <span style="font-weight: normal;">{{ item.product.name }}</span></p>
+                <p style="margin: 5px 0; font-weight: bold;">Quantity: <span style="font-weight: normal;">{{ item.quantity }}</span></p>
+                <p style="margin: 5px 0; font-weight: bold;">Price: <span style="font-weight: normal;">{{ item.product.price }}</span></p>
+                <a href="{% url 'cart:remove_from_cart' item.product.id %}" style="color: #E60100; text-decoration: none;">Remove</a>
+            </div>
+        {% empty %}
+            <p style="font-weight: bold; color: #555;">Your cart is empty.</p>
+        {% endfor %}
+        <h3 style="margin-top: 20px; font-weight: bold; color: #333;">Total Cost: <span style="font-weight: normal;">{{ total_cost }}</span></h3>
+        <a href="{% url 'cart:checkout' %}" style="display: inline-block; padding: 12px 30px; background-color: #FDD017; color: rgb(255, 0, 0); text-decoration: none; border-radius: 5px; margin-top: 10px;">Proceed to Checkout</a>
+    </div>
+{% endblock %}

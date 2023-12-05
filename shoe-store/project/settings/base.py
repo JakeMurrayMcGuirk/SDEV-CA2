@@ -86,7 +86,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-DATABASES = {"default": dj_database_url.config()}
+DATABASES = {
+    "default": dj_database_url.config(default='sqlite:///file.db')
+}
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.User'
@@ -113,7 +115,8 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGOUT_ON_PASSWORD_CHANGE = False
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/login/"
+LOGIN_URL = '/login/'
 
 REST_AUTH = {
     "SESSION_LOGIN": False,

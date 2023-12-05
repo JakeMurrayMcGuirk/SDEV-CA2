@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px;">
+    <h1 style="font-size: 30px; color: #E60100; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px;">Checkout</h1>
+    
+    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f4f4f4;">
+                <th style="padding: 8px; text-align: left;">Product</th>
+                <th style="padding: 8px; text-align: left;">Quantity</th>
+                <th style="padding: 8px; text-align: left;">Price</th>
+                <th style="padding: 8px; text-align: left;">Subtotal</th>
+                <th style="padding: 8px; text-align: left;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td style="padding: 8px;">{{ item.product.name }}</td>
+                <td style="padding: 8px;">{{ item.quantity }}</td>
+                <td style="padding: 8px;">€{{ item.product.price }}</td>
+                <td style="padding: 8px;">€{{ item.sub_total }}</td>
+                <td style="padding: 8px;">
+                    <a href="{% url 'cart:remove_from_cart' item.product.id %}" style="color: #fff; background-color: #E60100; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p style="margin-top: 20px; font-weight: bold;">Cart Total: €{{ cart_total }}</p>
+
+    <form method="post" style="margin-top: 20px;">
+        {% csrf_token %}
+        {{ payment_form.as_p }}
+        <button type="submit" style="background-color: #E60100; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Place Order</button>
+    </form>
+    <a href="{% url 'cart:cart_detail' %}" style="display: inline-block; margin-top: 20px; background-color: #f4f4f4; color: #555; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Back to Cart</a>
+</div>
+
+<script>
+    // Existing JavaScript code for date formatting
+</script>
+
+{% endblock %}
