@@ -24,7 +24,7 @@ def signup(request):
         user = User.objects.create_user(username, email=email, name=name, password=password)
         if user:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('profile')
         else:
             messages.error(request, 'Failed to create user')
 
@@ -97,13 +97,6 @@ def account_deletion(request):
     
     return render(request, 'account_delete.html', {'user': user})
 
-# View for the dashboard
-@login_required
-def dashboard(request):
-    user = request.user
-    # Logic to display user dashboard (e.g., orders, cart)
-    
-    return render(request, 'dashboard.html', {'user': user})
 
 @login_required
 def user_profile(request):
