@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-
+from django.shortcuts import render, redirect, get_object_or_404
 from . import permissions
 from .models import Oderitem, Order
 from .serializers import OderitemSerializer, OrderSerializer
@@ -18,3 +18,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+def checkout_list(request):
+    checkout = Order.objects.all()
+    return render(request, 'checkout.html', {'checkout': checkout})
+
