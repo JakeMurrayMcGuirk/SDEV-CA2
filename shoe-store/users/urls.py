@@ -1,7 +1,7 @@
 from rest_framework import routers
 from django.urls import path
 from . import views
-from .views import UserViewSet, home, signup, user_login, user_logout, user_profile, user_settings, user_preferences, account_deletion, dashboard
+from .views import UserViewSet, home, signup, user_login, user_logout, user_profile, user_settings, user_preferences, account_deletion
 users_router = routers.SimpleRouter()
 users_router.register(r"users/user", UserViewSet)
 
