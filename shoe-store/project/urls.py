@@ -8,6 +8,7 @@ from reviews.urls import reviews_router
 from search.urls import search_router
 from wishlist.urls import wishlist_router
 
+
 from blog.urls import blog_router
 from users.urls import users_router
 from django.conf import settings
@@ -23,6 +24,7 @@ router.registry.extend(search_router.registry)
 router.registry.extend(wishlist_router.registry)
 router.registry.extend(users_router.registry)
 
+
 urlpatterns = [
     path('', include('users.urls')),
     path('api/v1/products/', include('products.urls')), 
@@ -36,6 +38,7 @@ urlpatterns = [
     path("api/v1/", include(router.urls)),
     path("cart/", include("cart.urls", namespace="cart")),
     path('api/v1/products/cart/', include('cart.urls')),
+    path('api/v1/reviews/', include('reviews.urls')), 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   
 

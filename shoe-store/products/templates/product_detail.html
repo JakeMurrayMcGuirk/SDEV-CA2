@@ -30,6 +30,33 @@
                 <button class="add-to-wishlist-btn" onclick="addToWishlist('{{ product.id|safe }}')" style="display: inline-block;">Add to Wishlist</button>
                 <button class="back-to-products-btn" onclick="window.history.back()" style="display: inline-block;">Back to Products</button>
             </div>
+
+            <h3>Leave a Review</h3>
+            <form method="post" action="{% url 'submit_review' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <input type="number" name="rating" id="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="review_text">Review</label>
+                    <textarea name="review_text" id="review_text" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        
+            <!-- List of reviews -->
+            <h3>Reviews</h3>
+            <ul class="list-group">
+                {% for review in product.product_reviews.all %}
+                    <li class="list-group-item">
+                        <h5>{{ review.user.username }}</h5>
+                        <p>Rating: {{ review.rating }}/5</p>
+                        <p>{{ review.review_text }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+
         </div>
     </main>
 </body>
