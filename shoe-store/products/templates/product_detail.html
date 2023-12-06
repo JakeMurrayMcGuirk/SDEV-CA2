@@ -48,7 +48,7 @@
         {% endfor %}
         
         <!-- Form to submit a review -->
-        <form method="post" action="{% url 'submit_review' product.id %}">
+        <form method="post" action="{% url 'products:submit_review' product.id %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit Review</button>

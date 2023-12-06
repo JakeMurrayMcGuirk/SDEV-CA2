@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import CategoryViewSet, ProductModelViewSet, CategoryListView, ProductListView, ProductDetailView, AllProductListView
 from cart.views import add_to_cart 
 from . import views
+APPNAME = 'products'
 
 products_router = routers.SimpleRouter()
 products_router.register(r"products/category", CategoryViewSet)
