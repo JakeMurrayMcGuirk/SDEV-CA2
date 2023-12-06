@@ -41,7 +41,7 @@ def user_login(request):
         if user is not None:
             login(request, user)
             # Redirect accordingly
-            return redirect('dashboard')
+            return redirect('profile')
         else:
             messages.error(request, 'Invalid credentials')
     
