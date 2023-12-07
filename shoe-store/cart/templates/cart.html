@@ -151,7 +151,7 @@
             <table class="table">
                 <tr>
                     <th><h5>Items: <strong>3</strong></5></th>
-                    <th><h5>Total: <strong>$43</strong></5></th>
+                    <th><h5>Total: <strong>43</strong></5></th>
                     <th>
                         <a style="float:right; margin:5px" class="btn btn-success" href="{% url 'checkout' %}">&#x2190;Checkout</a>
                     </th>
@@ -174,7 +174,7 @@
             <div class="cart-row">
                 <div style="flex:2"><img class="row-image" src="{{product.imageURL}}"></div>
                 <div style="flex:2">{{product.name}}</div>
-                <div style="flex:1">${{product.price|floatformat:2}}</div>                
+                <div style="flex:1">{{product.price|floatformat:2}}</div>                
                 <div style="flex:1">
                     <p class="quantity">{{quantity}}</p>
 						<div class="quantity">
@@ -183,7 +183,7 @@
 							<img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
 						</div>
                 </div>
-                <div style="flex:1">$40</div>
+                <div style="flex:1">40</div>
             </div>
             {% endfor %}
         </div>
