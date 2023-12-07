@@ -39,6 +39,8 @@ pip install django ruff
 
 pip install django uritemplate
 
+pip install django-crispy-forms
+
 
 3. # Set the database
 
