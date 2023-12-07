@@ -5,6 +5,10 @@ from .models import Category, ProductModel
 from .serializers import CategorySerializer, ProductModelSerializer
 from django.views.generic import ListView, DetailView
 
+from reviews.models import ProductReview
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import ReviewForm
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -95,3 +99,26 @@ class ProductDetailView(DetailView):
     model = ProductModel
     template_name = 'product_detail.html'
     context_object_name = 'product'
+
+
+def add_review(request, pk):
+    product = get_object_or_404(ProductModel, pk=pk)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        user = request.user
+        rating = form.cleaned_data['rating']
+        review_text = form.cleaned_data['review_text']
+        reviewObject = ProductReview(product=product, user=user, rating=rating, review_text=review_text)
+        if rating > 5 or rating < 0:
+            return redirect('product_list')
+        else:
+            reviewObject.save()
+
+            return redirect('product_list')
+    
+    form = ReviewForm()
+    context = {
+        "product":product,
+        "form":form
+    }
+    return render(request, 'review_new.html',context)

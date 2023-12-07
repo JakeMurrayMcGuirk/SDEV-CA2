@@ -31,6 +31,34 @@
                 <button class="back-to-products-btn" onclick="window.history.back()" style="display: inline-block;">Back to Products</button>
             </div>
         </div>
+
+        <!--Review Section-->
+        <section class="reviews-section">
+            <h2>Product Reviews</h2>
+            {% if product.product_reviews.all %}
+                <ul>
+                    {% for review in product.product_reviews.all %}
+                        <li>
+                            <strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5:
+                            <p>{{ review.review_text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No reviews yet.</p>
+            {% endif %}
+            
+            <!-- Add your review form here -->
+            {% if user.is_authenticated %}
+            <form action="submit-review" method="POST">Submit Review</a>
+                <a href="{% url 'review_new' product.pk %}">NEW REVIEW</a>
+            {% else %}
+            <p>Must be logged in to post review.</p>
+            {% endif %}
+        </section>
+
+
+
     </main>
 </body>
 </html>

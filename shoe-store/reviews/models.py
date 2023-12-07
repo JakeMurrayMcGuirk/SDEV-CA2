@@ -44,3 +44,6 @@ class ProductReview(models.Model):
     def __str__(self):
         """String representation of a ProductReview instance."""
         return self.review_text
+    
+    #class Meta:
+     #   app_label = "reviews"

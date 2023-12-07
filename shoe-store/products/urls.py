@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import path, include
-from .views import CategoryViewSet, ProductModelViewSet, CategoryListView, ProductListView, ProductDetailView, AllProductListView
+from .views import CategoryViewSet, ProductModelViewSet, CategoryListView, ProductListView, ProductDetailView, AllProductListView, add_review
 from cart.views import add_to_cart 
 
 products_router = routers.SimpleRouter()
@@ -15,4 +15,5 @@ urlpatterns = [
     path('categories/<int:pk>/products/', ProductListView.as_view(), name='product_list'),
     path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
     path('api/v1/products/add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+    path('review_new/<int:pk>', add_review, name='review_new'),
 ]
