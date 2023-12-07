@@ -41,6 +41,8 @@ pip install django uritemplate
 
 pip install django-crispy-forms
 
+pip install crispy-bootstrap4
+
 
 3. # Set the database
 
