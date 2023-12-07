@@ -35,7 +35,7 @@ pip install isort
 
 pip install django Pillow
 
-pip intsall django ruff
+pip install django ruff
 
 pip install django uritemplate
 
